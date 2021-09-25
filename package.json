@@ -1,0 +1,19 @@
+{
+  "name": "2021fall",
+  "version": "1.0.0",
+   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuinnHerden/Dream_Log.git"
+  },
+  "author": "Quinn Herden",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.17.1"
+  },
+  "devDependencies": {
+    "nodemon":"^2.0.12"
+  }
+}
