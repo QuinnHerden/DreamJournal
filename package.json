@@ -1,24 +1,25 @@
-{   "name": "2021fall",
-  "version": "1.0.0",
-   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "css-build": "node-sass --omit-source-map-url docs/sass/mystyles.scss docs/css/mystyles.css",
-    "css-watch": "npm run css-build -- --watch",
-    "start": "npm run css-watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/QuinnHerden/Dream_Log.git"
-  },
-  "author": "Quinn Herden",
-  "license": "ISC",
-  "dependencies": {
-    "express": "4.17.1",
-    "lodash": "^4.17.21"
-  },
-  "devDependencies": {
-    "nodemon":"^2.0.12",
-    "bulma": "0.9.3",
-    "node-sass": "6.0.1"
-  }
+{
+    "name": "2021fall",
+    "version": "1.0.0",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "css-build": "node-sass --omit-source-map-url docs/sass/mystyles.scss docs/css/mystyles.css",
+        "css-watch": "npm run css-build -- --watch",
+        "start": "npm run css-watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/QuinnHerden/Dream_Log.git"
+    },
+    "author": "Quinn Herden",
+    "license": "ISC",
+    "dependencies": {
+        "express": "4.17.1",
+        "lodash": "^4.17.21"
+    },
+    "devDependencies": {
+        "bulma": "^0.9.3",
+        "node-sass": "6.0.1",
+        "nodemon": "^2.0.12"
+    }
 }

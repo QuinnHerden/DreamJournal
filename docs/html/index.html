@@ -13,7 +13,7 @@
   <section class="section">
     <nav class="navbar is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item" href="./index.html">
           <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
         </a>
 
@@ -31,6 +31,9 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <a href="https://github.com/QuinnHerden/DreamJournal">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
               <button class="button">
                 <span>GitHub</span>
               </button>
@@ -42,22 +45,65 @@
   </section>
 
 
+
   <div class="container is-max-desktop">
-
-
     <section class="section is-large">
       <h1 class="title is-1">Dream With Us.</h1>
       <h2 class="subtitle is-3">
         A network for oneironauts, sharing dream journals.
       </h2>
 
-      <a href="./oauth.html">
-        <button class="button is-link is-fullwidth">
-          <strong>Enter</strong>
-        </button>
-      </a>
+      <button id="launch_modal" class="button is-primary is-fullwidth">
+        <strong>Enter</strong>
+      </button>
     </section>
   </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="card">
+        <div class="card-content">
+          <div class="content">
+            <form action="" class="box">
+              <div class="field">
+                <label for="" class="label">Email</label>
+                <div class="control has-icons-left">
+                  <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input">
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-envelope"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="" class="label">Password</label>
+                <div class="control has-icons-left">
+                  <input type="password" placeholder="*******" class="input">
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-lock"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="" class="checkbox">
+                  <input type="checkbox">
+                  Remember me
+                </label>
+              </div>
+              <div class="field">
+                <button class="button is-primary">
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+  
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="../scripts/script.js"></script>
