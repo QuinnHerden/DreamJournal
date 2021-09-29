@@ -1,9 +1,10 @@
-{
-  "name": "2021fall",
+{   "name": "2021fall",
   "version": "1.0.0",
    "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --watch server server/index"
+    "css-build": "node-sass --omit-source-map-url docs/sass/mystyles.scss docs/css/mystyles.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
   },
   "repository": {
     "type": "git",
@@ -16,6 +17,8 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "nodemon":"^2.0.12"
+    "nodemon":"^2.0.12",
+    "bulma": "0.9.3",
+    "node-sass": "6.0.1"
   }
 }
