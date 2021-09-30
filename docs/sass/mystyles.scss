@@ -30,9 +30,6 @@ $gap: 10px;
 $container-offset: (2 * $gap);
 $section-padding: 3rem 1.5rem;
 
-// Footer
-$footer-padding: 1.5rem 1.5rem 1.5rem;
-
 // Import only what you need from Bulma
 @import "../../node_modules/bulma/sass/base/_all.sass";
 @import "../../node_modules/bulma/sass/components/_all.sass";
