@@ -55,6 +55,16 @@
         <div class="columns is-centered">
           <div class="column is-5-tablet is-4-desktop is-3-widescreen">
             <form action="" class="box">
+
+              <div class="field">
+                <label for="" class="label">Username</label>
+                <div class="control has-icons-left">
+                  <input type="username" placeholder="e.g. john_doe" class="input" required>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </div>
+              </div>
               <div class="field">
                 <label for="" class="label">Email</label>
                 <div class="control has-icons-left">
@@ -74,14 +84,21 @@
                 </div>
               </div>
               <div class="field">
-                <label for="" class="checkbox">
-                  <input type="checkbox">
-                  Remember me
-                </label>
+                <div class="control">
+                  <label for="" class="label">Visibility</label>
+                  <label class="radio">
+                    <input type="radio" name="visibility" checked>
+                    Public
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="visibility">
+                    Private
+                  </label>
+                </div>
               </div>
               <div class="field">
                 <button class="button is-primary">
-                  Log in
+                  Sign up
                 </button>
               </div>
             </form>
