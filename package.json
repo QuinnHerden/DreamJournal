@@ -14,11 +14,12 @@
     "author": "Quinn Herden",
     "license": "ISC",
     "dependencies": {
+        "@fortawesome/fontawesome-free":"5.15.4",
         "express": "4.17.1",
         "lodash": "^4.17.21"
     },
     "devDependencies": {
-        "bulma": "^0.9.3",
+        "bulma": "0.9.3",
         "node-sass": "6.0.1",
         "nodemon": "^2.0.12"
     }
