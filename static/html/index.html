@@ -10,64 +10,57 @@
 </head>
 
 <body>
-  <section class="section">
-    <nav class="navbar is-fixed-top has-shadow" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
+  <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="index.html">
+        <img src="../image/logo.png" width="112" height="28">
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div class="navbar-menu">
+      <div class="navbar-start">
         <a class="navbar-item" href="index.html">
-          <img src="../image/logo.png" width="112" height="28">
+          Home
         </a>
 
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
+        <a class="navbar-item" href="https://github.com/QuinnHerden/DreamJournal">
+          Documentation
         </a>
       </div>
 
-      <div class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="index.html">
-            Home
-          </a>
-
-          <a class="navbar-item" href="https://github.com/QuinnHerden/DreamJournal">
-            Documentation
-          </a>
-
-          
-        </div>
-
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary" href="signup.html">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light" href="login.html">
-                Log in
-              </a>
-            </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary" href="signup.html">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light" href="login.html">
+              Log in
+            </a>
           </div>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
+
+
+  <section class="hero is-fullheight-with-navbar">
+    <div class="container is-primary">
+      <section class="section is-large">
+        <h1 class="title is-1">Dream With Us.</h1>
+        <h2 class="subtitle is-3">
+          A network for oneironauts, sharing dream journals.
+        </h2>
+      </section>
+    </div>
   </section>
 
-
-
-  <div class="container is-max-desktop">
-    <section class="section is-large">
-      <h1 class="title is-1">Dream With Us.</h1>
-      <h2 class="subtitle is-3">
-        A network for oneironauts, sharing dream journals.
-      </h2>
-
-      <button id="launch_modal" class="button is-primary is-fullwidth">
-        <strong>Enter</strong>
-      </button>
-    </section>
-  </div>
-  
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="../scripts/script.js"></script>
