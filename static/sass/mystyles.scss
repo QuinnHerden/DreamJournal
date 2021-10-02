@@ -4,11 +4,11 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 
 // Set your brand colors
-$purple: #8A4D76;
-$pink: #FA7C91;
+$purple: #99a5cc;
+$pink: #b880ec;
 $brown: #757763;
 $beige-light: #D0D1CD;
-$beige-lighter: #EFF0EB;
+$beige-lighter: #99a5cc;
 
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
@@ -24,15 +24,11 @@ $body-background-color: $beige-lighter;
 $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
-
-// Cards
-// $card-color: black;
-// $card-background-color: $brown;
+// $box-color: $pink;
 
 // Containters
 $gap: 10px;
 $container-offset: (2 * $gap);
-
 $section-padding: 3rem 1.5rem;
 
 // Import only what you need from Bulma
