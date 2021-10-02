@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DreamJournal</title>
+  <link rel="stylesheet" href="../css/mystyles.css">
+</head>
+
+<body>
+  <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="index.html">
+        <img src="../image/logo.png" width="112" height="28">
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="home.html">
+          Home
+        </a>
+
+        <a class="navbar-item" href="https://github.com/QuinnHerden/DreamJournal">
+          Documentation
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary" href="signup.html">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light" href="login.html">
+              Log in
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <section id="entry_1" class="section">
+
+
+    <div id="entry" class="container">
+      <div class="card">
+        <div class="card-content">
+
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <a id="launch_modal">
+                  <img src="https://bulma.io/images/placeholders/96x96.png" alt="Dream Illustration">
+                </a>
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4">Title of Dream</p>
+              <p class="subtitle is-6"><a>name_of_user_author</a></p>
+            </div>
+          </div>
+
+          <div class="content">
+            <p class=""><time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time></p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec leo nisi, dictum a ultricies nec, egestas
+              id diam. Etiam tempor interdum sollicitudin. Ut vitae quam lacus. Nunc auctor eleifend hendrerit. Nullam
+              ac bibendum velit, a varius purus. Proin condimentum tortor in neque accumsan porttitor. In sagittis
+              vulputate libero vel interdum.
+            </p>
+            <p>
+              Ut metus diam, lacinia ac dolor in, consequat luctus dui. Maecenas a massa id nunc commodo feugiat quis
+              in
+              augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla facilisis diam vel
+              scelerisque. Integer arcu turpis, gravida sed magna id, porttitor blandit magna. Aliquam lobortis dui et
+              dui ultrices malesuada. Vivamus semper orci ullamcorper, maximus sem at, scelerisque odio. Nulla rutrum
+              fringilla semper. Sed gravida tincidunt nunc sed bibendum. Sed venenatis purus nec hendrerit pulvinar.
+              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam sapien
+              metus, viverra sit amet gravida eget, suscipit sed augue. Vivamus elementum lobortis lectus, at dictum
+              odio tincidunt at.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec leo nisi, dictum a ultricies nec, egestas
+              id diam. Etiam tempor interdum sollicitudin. Ut vitae quam lacus. Nunc auctor eleifend hendrerit. Nullam
+              ac bibendum velit, a varius purus. Proin condimentum tortor in neque accumsan porttitor. In sagittis
+              vulputate libero vel interdum.
+            </p>
+
+            <p>#list #of #tags #goes #here</p>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">Save</a>
+          <a href="#" class="card-footer-item">Share</a>
+          <a href="#" class="card-footer-item">Edit</a>
+          <a href="#" class="card-footer-item">Delete</a>
+        </footer>
+      </div>
+    </div>
+
+    <div id="comments" class="container">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            Comments
+          </p>
+          <button class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </header>
+        <div class="card-content">
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>Barbara Middleton</strong>
+                  <br>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit
+                  blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
+                  <br>
+                  <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
+                </p>
+              </div>
+
+              <article class="media">
+                <figure class="media-left">
+                  <p class="image is-48x48">
+                    <img src="https://bulma.io/images/placeholders/96x96.png">
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong>Sean Brown</strong>
+                      <br>
+                      Donec sollicitudin urna eget eros malesuada sagittis. Pellentesque habitant morbi tristique
+                      senectus et netus et malesuada fames ac turpis egestas. Aliquam blandit nisl a nulla sagittis, a
+                      lobortis leo feugiat.
+                      <br>
+                      <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
+                    </p>
+                  </div>
+
+                  <article class="media">
+                    Vivamus quis semper metus, non tincidunt dolor. Vivamus in mi eu lorem cursus ullamcorper sit amet
+                    nec massa.
+                  </article>
+
+                  <article class="media">
+                    Morbi vitae diam et purus tincidunt porttitor vel vitae augue. Praesent malesuada metus sed pharetra
+                    euismod. Cras tellus odio, tincidunt iaculis diam non, porta aliquet tortor.
+                  </article>
+                </div>
+              </article>
+
+              <article class="media">
+                <figure class="media-left">
+                  <p class="image is-48x48">
+                    <img src="https://bulma.io/images/placeholders/96x96.png">
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong>Kayli Eunice </strong>
+                      <br>
+                      Sed convallis scelerisque mauris, non pulvinar nunc mattis vel. Maecenas varius felis sit amet
+                      magna vestibulum euismod malesuada cursus libero. Vestibulum ante ipsum primis in faucibus orci
+                      luctus et ultrices posuere cubilia Curae; Phasellus lacinia non nisl id feugiat.
+                      <br>
+                      <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </article>
+
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="field">
+                <p class="control">
+                  <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <button class="button">Post comment</button>
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div id="illustration_1" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <p class="image is-4by3">
+        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="">
+      </p>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+  <section id="entry_2" class="section">
+
+
+    <div id="entry" class="container">
+      <div class="card">
+        <div class="card-content">
+
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <a id="launch_modal">
+                  <img src="https://bulma.io/images/placeholders/96x96.png" alt="Dream Illustration">
+                </a>
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4">Title of Dream</p>
+              <p class="subtitle is-6"><a>name_of_user_author</a></p>
+            </div>
+          </div>
+
+          <div class="content">
+            <p class=""><time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time></p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec leo nisi, dictum a ultricies nec, egestas
+              id diam. Etiam tempor interdum sollicitudin. Ut vitae quam lacus. Nunc auctor eleifend hendrerit. Nullam
+              ac bibendum velit, a varius purus. Proin condimentum tortor in neque accumsan porttitor. In sagittis
+              vulputate libero vel interdum.
+            </p>
+            <p>
+              Ut metus diam, lacinia ac dolor in, consequat luctus dui. Maecenas a massa id nunc commodo feugiat quis
+              in
+              augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla facilisis diam vel
+              scelerisque. Integer arcu turpis, gravida sed magna id, porttitor blandit magna. Aliquam lobortis dui et
+              dui ultrices malesuada. Vivamus semper orci ullamcorper, maximus sem at, scelerisque odio. Nulla rutrum
+              fringilla semper. Sed gravida tincidunt nunc sed bibendum. Sed venenatis purus nec hendrerit pulvinar.
+              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam sapien
+              metus, viverra sit amet gravida eget, suscipit sed augue. Vivamus elementum lobortis lectus, at dictum
+              odio tincidunt at.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec leo nisi, dictum a ultricies nec, egestas
+              id diam. Etiam tempor interdum sollicitudin. Ut vitae quam lacus. Nunc auctor eleifend hendrerit. Nullam
+              ac bibendum velit, a varius purus. Proin condimentum tortor in neque accumsan porttitor. In sagittis
+              vulputate libero vel interdum.
+            </p>
+
+            <p>#list #of #tags #goes #here</p>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">Save</a>
+          <a href="#" class="card-footer-item">Share</a>
+          <a href="#" class="card-footer-item">Edit</a>
+          <a href="#" class="card-footer-item">Delete</a>
+        </footer>
+      </div>
+    </div>
+
+    <div id="comments" class="container">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            Comments
+          </p>
+          <button class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </header>
+        <div class="card-content">
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>Barbara Middleton</strong>
+                  <br>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit
+                  blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
+                  <br>
+                  <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
+                </p>
+              </div>
+
+              <article class="media">
+                <figure class="media-left">
+                  <p class="image is-48x48">
+                    <img src="https://bulma.io/images/placeholders/96x96.png">
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong>Sean Brown</strong>
+                      <br>
+                      Donec sollicitudin urna eget eros malesuada sagittis. Pellentesque habitant morbi tristique
+                      senectus et netus et malesuada fames ac turpis egestas. Aliquam blandit nisl a nulla sagittis, a
+                      lobortis leo feugiat.
+                      <br>
+                      <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
+                    </p>
+                  </div>
+
+                  <article class="media">
+                    Vivamus quis semper metus, non tincidunt dolor. Vivamus in mi eu lorem cursus ullamcorper sit amet
+                    nec massa.
+                  </article>
+
+                  <article class="media">
+                    Morbi vitae diam et purus tincidunt porttitor vel vitae augue. Praesent malesuada metus sed pharetra
+                    euismod. Cras tellus odio, tincidunt iaculis diam non, porta aliquet tortor.
+                  </article>
+                </div>
+              </article>
+
+              <article class="media">
+                <figure class="media-left">
+                  <p class="image is-48x48">
+                    <img src="https://bulma.io/images/placeholders/96x96.png">
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong>Kayli Eunice </strong>
+                      <br>
+                      Sed convallis scelerisque mauris, non pulvinar nunc mattis vel. Maecenas varius felis sit amet
+                      magna vestibulum euismod malesuada cursus libero. Vestibulum ante ipsum primis in faucibus orci
+                      luctus et ultrices posuere cubilia Curae; Phasellus lacinia non nisl id feugiat.
+                      <br>
+                      <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </article>
+
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="field">
+                <p class="control">
+                  <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <button class="button">Post comment</button>
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="../scripts/script.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+</body>
+
+</html>

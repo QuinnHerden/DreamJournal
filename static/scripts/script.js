@@ -5,7 +5,7 @@ $(".navbar-burger").click(function() {
 })
 
 
-// Modal Care
+// Modal
 $("#launch_modal").click(function() {
     $(".modal").toggleClass("is-active");
 })
