@@ -14,7 +14,8 @@
     "author": "Quinn Herden",
     "license": "ISC",
     "dependencies": {
-        "@fortawesome/fontawesome-free":"5.15.4",
+        "@fortawesome/fontawesome-free": "5.15.4",
+        "bulma-calendar": "^6.1.13",
         "express": "4.17.1",
         "lodash": "^4.17.21"
     },
