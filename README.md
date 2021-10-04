@@ -12,7 +12,6 @@ https://quinn-dreamjournal.herokuapp.com/static/html/index.html
   * Password
   * Profile picture
   * Visibility of user (should people be able to see account)
-  * Delete
 
 * Dream Entry
   * Date
