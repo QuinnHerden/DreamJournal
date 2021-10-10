@@ -4,7 +4,7 @@
       <div class="container">
         <div class="columns is-centered">
           <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-            <form action="" class="box">
+            <form action="" class="box" @submit.prevent="signup">
               <div class="field">
                 <label class="label">Username</label>
                 <div class="control has-icons-left has-icons-right">
@@ -12,7 +12,7 @@
                     class="input is-success"
                     type="text"
                     placeholder="Text input"
-                    value=""
+                    v-model="username"
                   />
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
@@ -31,7 +31,7 @@
                     class="input is-danger"
                     type="email"
                     placeholder="Email input"
-                    value=""
+                    v-model="email"
                   />
                   <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
@@ -50,6 +50,7 @@
                     placeholder="***********"
                     class="input"
                     required
+                    v-model="password"
                   />
                   <span class="icon is-small is-left">
                     <i class="fas fa-lock"></i>
@@ -67,7 +68,7 @@
                 <div class="control">
                   <label for="" class="label">Account Visibility</label>
                   <label class="radio">
-                    <input type="radio" name="visibility" checked />
+                    <input type="radio" name="visibility" checked v-model="visibility" />
                     Public
                   </label>
                   <label class="radio">
@@ -104,7 +105,25 @@
 </template>
 
 <script>
-export default {};
+import Session from "../services/session";
+
+export default {
+  data: () => ({
+    username: null,
+    email: null,
+    password: null,
+    visibility: null,
+    picture: null,
+    Session,
+  }),
+  methods: {
+    signup() {
+      this.Session.Signup()
+      this.$router.push("/journal");
+      
+    },
+  },
+};
 </script>
 
 <style>

@@ -1,7 +1,7 @@
 const session = {
     user: null,
     messages: [],
-    Login(email, password){
+    Login(email, password) {
 
         this.user = {
             FirstName: 'Quinn',
@@ -9,6 +9,9 @@ const session = {
             Password: password,
             id: 613,
         }
+    },
+    Signup() {
+
     }
 };
 

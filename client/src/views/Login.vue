@@ -4,7 +4,7 @@
       <div class="container">
         <div class="columns is-centered">
           <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-            <form action="" class="box">
+            <form class="box" @submit.prevent="login">
               <div class="field">
                 <label for="" class="label">Email</label>
                 <div class="control has-icons-left">
@@ -13,6 +13,7 @@
                     placeholder="address@email.com"
                     class="input"
                     required
+                    v-model="email"
                   />
                   <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
@@ -27,6 +28,7 @@
                     placeholder="***********"
                     class="input"
                     required
+                    v-model="password"
                   />
                   <span class="icon is-small is-left">
                     <i class="fas fa-lock"></i>
@@ -51,7 +53,22 @@
 </template>
 
 <script>
-export default {};
+import Session from "../services/session";
+export default {
+  data: () => ({
+    email: null,
+    password: null,
+    Session,
+  }),
+  methods: {
+    login() {
+      this.Session.Login(this.email, this.password);
+      if (this.Session.user) {
+        this.$router.push("/journal");
+      }
+    },
+  },
+};
 </script>
 
 <style>

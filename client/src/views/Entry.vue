@@ -2,7 +2,7 @@
   <section class="section">
     <div class="container">
       <div class="card">
-        <div class="card-content">
+        <form class="box card-content" @submit.prevent="submit">
 
           <div class="field">
             <label class="label">Title</label>
@@ -80,17 +80,26 @@
               <button class="button is-primary">Submit</button>
             </div>
             <div class="control">
-              <button class="button is-link is-light">Cancel</button>
+              <button class="button is-link is-light" @click="cancel">Cancel</button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-
+export default {
+  methods: {
+    submit() {
+      this.$router.push("/journal");
+    },
+    cancel() {
+      this.$router.go(-1);
+    },
+  },
+};
 </script>
 
 <style>

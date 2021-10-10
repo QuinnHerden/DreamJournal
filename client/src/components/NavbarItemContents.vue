@@ -10,7 +10,7 @@
     <a class="button is-primary" @click="entry">
       <strong>New entry</strong>
     </a>
-    <a class="button is-light" href="profile.html"> Profile </a>
+    <a class="button is-light" @click="profile"> Profile </a>
   </div>
 </template>
 
