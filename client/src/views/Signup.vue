@@ -1,0 +1,111 @@
+<template>
+  <section class="hero is-primary is-fullheight-with-navbar">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+            <form action="" class="box">
+              <div class="field">
+                <label class="label">Username</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input
+                    class="input is-success"
+                    type="text"
+                    placeholder="Text input"
+                    value=""
+                  />
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </div>
+                <p class="help is-success">This username is available</p>
+              </div>
+
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input
+                    class="input is-danger"
+                    type="email"
+                    placeholder="Email input"
+                    value=""
+                  />
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </span>
+                </div>
+                <p class="help is-danger">This email is invalid</p>
+              </div>
+              <div class="field">
+                <label for="" class="label">Password</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input
+                    type="password"
+                    placeholder="***********"
+                    class="input"
+                    required
+                  />
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </div>
+                <p class="help is-danger">
+                  Password must contain eight characters
+                </p>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <label for="" class="label">Account Visibility</label>
+                  <label class="radio">
+                    <input type="radio" name="visibility" checked />
+                    Public
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="visibility" />
+                    Private
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Profile Picture</label>
+                <div class="file">
+                  <label class="file-label">
+                    <input class="file-input" type="file" name="resume" />
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                      </span>
+                      <span class="file-label"> Choose a file… </span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <button class="button is-primary">Sign up</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style>
+</style>

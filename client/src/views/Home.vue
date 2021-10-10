@@ -1,18 +1,18 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+ <section class="hero is-primary is-fullheight-with-navbar">
+    <div class="hero-body">
+      <div class="container">
+        <section class="section is-large">
+          <h1 class="title is-1">Dream With Us.</h1>
+          <h2 class="subtitle is-3">
+            A network for oneironauts, sharing their stories.
+          </h2>
+        </section>
+      </div>
+    </div>
+    </section>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
 </script>
