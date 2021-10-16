@@ -1,8 +1,8 @@
 <template>
-<div>
-  <entry-card></entry-card>
-  <entry-card></entry-card>
-</div>
+  <div class="container">
+    <entry-card></entry-card>
+    <entry-card></entry-card>
+  </div>
 </template>
 
 <script>
