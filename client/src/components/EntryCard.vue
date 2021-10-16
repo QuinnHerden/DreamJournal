@@ -1,12 +1,12 @@
 <template>
   <section class="section">
-    <div id="entry" class="container">
+    <div class="container">
       <div class="card">
         <div class="card-content">
           <div class="media">
             <div class="media-left">
               <figure class="image is-48x48">
-                <a id="launch_modal">
+                <a>
                   <img
                     src="https://bulma.io/images/placeholders/96x96.png"
                     alt="Dream Illustration"
@@ -45,13 +45,13 @@
         </footer>
       </div>
     </div>
+
     <comments></comments>
   </section>
 </template>
 
 <script>
 import Comments from "./Comments.vue";
-
 export default {
   components: { Comments },
   data: () => {

@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <div id="overview" class="container">
+    <div class="container">
       <div class="card">
         <div class="card-content">
           <div class="media">

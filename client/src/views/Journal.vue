@@ -1,6 +1,8 @@
 <template>
+<div>
   <entry-card></entry-card>
   <entry-card></entry-card>
+</div>
 </template>
 
 <script>
