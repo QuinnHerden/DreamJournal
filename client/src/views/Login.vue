@@ -9,7 +9,7 @@
                 <label for="" class="label">Email</label>
                 <div class="control has-icons-left">
                   <input
-                    type="email"
+                    type="text"
                     placeholder="address@email.com"
                     class="input"
                     required
@@ -64,7 +64,7 @@ export default {
     login() {
       this.Session.Login(this.email, this.password);
       if (this.Session.user) {
-        this.$router.push("/journal");
+        this.$router.push(this.Session.toRoute);
       }
     },
   },

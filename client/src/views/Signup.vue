@@ -68,7 +68,12 @@
                 <div class="control">
                   <label for="" class="label">Account Visibility</label>
                   <label class="radio">
-                    <input type="radio" name="visibility" checked v-model="visibility" />
+                    <input
+                      type="radio"
+                      name="visibility"
+                      checked
+                      v-model="visibility"
+                    />
                     Public
                   </label>
                   <label class="radio">
@@ -118,9 +123,10 @@ export default {
   }),
   methods: {
     signup() {
-      this.Session.Signup()
-      this.$router.push("/journal");
-      
+      this.Session.Login(this.email, this.password);
+      if (this.Session.user) {
+        this.$router.push(this.Session.toRoute);
+      }
     },
   },
 };

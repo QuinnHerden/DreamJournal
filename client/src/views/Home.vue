@@ -1,5 +1,5 @@
 <template>
- <section class="hero is-primary is-fullheight-with-navbar">
+  <section class="hero is-primary is-fullheight-with-navbar">
     <div class="hero-body">
       <div class="container">
         <section class="section is-large">
@@ -10,9 +10,8 @@
         </section>
       </div>
     </div>
-    </section>
+  </section>
 </template>
 
 <script>
-
 </script>

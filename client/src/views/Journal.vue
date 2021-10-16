@@ -378,7 +378,6 @@
 </template>
 
 <script>
-
 </script>
 
 <style>

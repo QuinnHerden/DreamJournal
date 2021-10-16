@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" @click="home">
+      <router-link class="navbar-item" to="/">
         <img src="../assets/logo.png" width="112" height="28" />
-      </a>
+      </router-link>
 
       <a
         role="button"
@@ -22,12 +22,20 @@
     <div class="navbar-menu" :class="{ 'is-active': isActive }">
       <div class="navbar-start">
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" @click="journal"> Journals </a>
+          <router-link class="navbar-link" to="/journal">
+            Journals
+          </router-link>
 
           <div class="navbar-dropdown">
-            <a class="navbar-item" @click="journal"> Global </a>
-            <a class="navbar-item" @click="journal"> Friends </a>
-            <a class="navbar-item" @click="journal"> Personal </a>
+            <router-link class="navbar-item" to="/journal">
+              Global
+            </router-link>
+            <router-link class="navbar-item" to="/journal">
+              Friends
+            </router-link>
+            <router-link class="navbar-item" to="/journal">
+              Personal
+            </router-link>
           </div>
         </div>
       </div>
@@ -54,14 +62,7 @@ export default {
       Session,
     };
   },
-  methods: {
-    journal() {
-      this.$router.push("/journal");
-    },
-    home() {
-      this.$router.push("/");
-    },
-  },
+  methods: {},
 };
 </script>
 

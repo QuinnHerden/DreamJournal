@@ -1,16 +1,16 @@
 <template>
   <div class="buttons" v-if="!Session.user">
-    <a class="button is-primary" @click="signup">
+    <router-link class="button is-primary" to="/signup">
       <strong>Sign up</strong>
-    </a>
-    <a class="button is-light" @click="login"> Log in </a>
+    </router-link>
+    <router-link class="button is-light" to="/login"> Log in </router-link>
   </div>
 
   <div class="buttons" v-else>
-    <a class="button is-primary" @click="entry">
+    <router-link class="button is-primary" to="/entry">
       <strong>New entry</strong>
-    </a>
-    <a class="button is-light" @click="profile"> Profile </a>
+    </router-link>
+    <router-link class="button is-light" to="/profile"> Profile </router-link>
   </div>
 </template>
 
@@ -23,20 +23,7 @@ export default {
       Session,
     };
   },
-  methods: {
-    login() {
-      this.$router.push("/login");
-    },
-    signup() {
-      this.$router.push("/signup");
-    },
-    entry() {
-      this.$router.push("/entry");
-    },
-    profile() {
-      this.$router.push("/profile");
-    },
-  },
+  methods: {},
   computed: {
     name() {
       return this.Session.user.FirstName + " " + this.Session.user.LastName;

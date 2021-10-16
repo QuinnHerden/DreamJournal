@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Journal from '../views/Journal.vue'
 import Entry from '../views/Entry.vue'
 import Profile from '../views/Profile.vue'
+import session from '../services/session'
 
 const routes = [
   {
@@ -14,17 +15,20 @@ const routes = [
   {
     path: '/journal',
     name: 'Journal',
-    component: Journal
+    component: Journal,
+    meta: { requiresLogin: true }
   },
   {
     path: '/entry',
     name: 'Entry',
-    component: Entry
+    component: Entry,
+    meta: { requiresLogin: true }
   },
   {
     path: '/profile',
     name: 'Profile',
-    component: Profile
+    component: Profile,
+    meta: { requiresLogin: true }
   },
   {
     path: '/login',
@@ -46,6 +50,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresLogin && !Session.user) {
+    session.toRoute = to;
     next('/login');
   } else {
     next();

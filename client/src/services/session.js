@@ -1,18 +1,16 @@
 const session = {
     user: null,
     messages: [],
+    toRoute: null,
     Login(email, password) {
 
         this.user = {
             FirstName: 'Quinn',
-            LastName: email,
+            Email: email,
             Password: password,
             id: 613,
         }
     },
-    Signup() {
-
-    }
 };
 
 export default session;
