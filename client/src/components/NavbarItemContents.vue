@@ -25,9 +25,6 @@ export default {
   },
   methods: {},
   computed: {
-    name() {
-      return this.Session.user.FirstName + " " + this.Session.user.LastName;
-    },
   },
 };
 </script>
