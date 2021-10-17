@@ -2,10 +2,10 @@
   <div id="comments" class="container">
     <div class="card">
       <header class="card-header" @click="toggle">
-        <p class="card-header-title">({{ count }}) Comments</p>
-        <button class="card-header-icon" aria-label="more options">
+        <a class="card-header-title">({{ count }}) Comments</a>
+        <button class="card-header-icon is-active" aria-label="more options">
           <span class="icon">
-            <i class="fas fa-angle-up" :aria-hidden="true"></i>
+            <i class="fas" :class="{'fa-angle-up': !hidden, 'fa-angle-down': hidden}" aria-hidden="true"></i>
           </span>
         </button>
       </header>
