@@ -124,8 +124,10 @@ export default {
   methods: {
     signup() {
       this.Session.Login(this.email, this.password);
-      if (this.Session.user) {
+      if (this.Session.user && this.Session.toRoute) {
         this.$router.push(this.Session.toRoute);
+      } else if (this.Session.user) {
+        this.$router.push('/journal');
       }
     },
   },
