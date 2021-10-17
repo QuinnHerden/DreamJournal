@@ -1,28 +1,28 @@
 {
-    "name": "2021fall",
-    "version": "1.0.0",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "css-build": "node-sass --omit-source-map-url no-framework/sass/mystyles.scss no-framework/css/mystyles.css",
-        "css-watch": "npm run css-build -- --watch",
-        "start": "npm run css-watch",
-        "buildHeroku": "npm run build --prefix client"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/QuinnHerden/Dream_Log.git"
-    },
-    "author": "Quinn Herden",
-    "license": "ISC",
-    "dependencies": {
-        "@fortawesome/fontawesome-free": "5.15.4",
-        "bulma": "0.9.3",
-        "express": "4.17.1",
-        "lodash": "^4.17.21",
-        "serve": "^12.0.1"
-    },
-    "devDependencies": {
-        "node-sass": "6.0.1",
-        "nodemon": "^2.0.12"
-    }
+  "name": "Dream Journal",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css-build": "node-sass --omit-source-map-url no-framework/sass/mystyles.scss no-framework/css/mystyles.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch",
+    "buildHeroku": "npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuinnHerden/DreamJournal"
+  },
+  "author": "Quinn Herden",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "5.15.4",
+    "bulma": "0.9.3",
+    "express": "4.17.1",
+    "lodash": "^4.17.21",
+    "serve": "^12.0.1"
+  },
+  "devDependencies": {
+    "node-sass": "6.0.1",
+    "nodemon": "^2.0.12"
+  }
 }
