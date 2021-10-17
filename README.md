@@ -1,7 +1,7 @@
 # Dream Log
 
 Deployment URL:
-https://quinn-dreamjournal.herokuapp.com/static/html/index.html
+http://dreamjournal-quinn.herokuapp.com/docs/
 
 ## Upcoming Features
 
