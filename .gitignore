@@ -104,5 +104,6 @@ dist
 # TernJS port file
 .tern-port
 
-# Heroku static.json
+# Heroku ignores
 static.json
+Procfile
