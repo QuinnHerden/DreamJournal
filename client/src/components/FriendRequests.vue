@@ -2,10 +2,10 @@
   <div id="friend_requests" class="container">
     <div class="card">
       <header class="card-header"  @click="toggle">
-        <p class="card-header-title">({{ count }}) Friend Requests</p>
+        <a class="card-header-title">({{ count }}) Friend Requests</a>
         <button class="card-header-icon" aria-label="more options">
           <span class="icon">
-            <i class="fas fa-angle-up" aria-hidden="false"></i>
+            <i class="fas" :class="{'fa-angle-up': !hidden, 'fa-angle-down': hidden}" aria-hidden="true"></i>
           </span>
         </button>
       </header>
