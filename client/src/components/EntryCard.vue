@@ -2,16 +2,22 @@
   <section class="section">
     <div class="container">
       <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img
+              :src="image"
+              alt="Dream Illustration"
+            />
+          </figure>
+        </div>
         <div class="card-content">
           <div class="media">
             <div class="media-left">
               <figure class="image is-48x48">
-                <a @click="openIllustration">
-                  <img
-                    src="https://bulma.io/images/placeholders/96x96.png"
-                    alt="Dream Illustration"
-                  />
-                </a>
+                <img
+                  src="https://bulma.io/images/placeholders/96x96.png"
+                  alt="profile picture"
+                />
               </figure>
             </div>
             <div class="media-content">
@@ -47,16 +53,13 @@
     </div>
 
     <comments></comments>
-
-    <entry-card-modal></entry-card-modal>
   </section>
 </template>
 
 <script>
 import Comments from "./Comments.vue";
-import EntryCardModal from './EntryCardModal.vue';
 export default {
-  components: { Comments, EntryCardModal },
+  components: { Comments },
   data: () => {
     return {
       title: "Dream Title",
@@ -68,15 +71,9 @@ export default {
         "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in .",
       ],
       tags: ["#list", "#of", "#tags"],
-      image: null,
-      EntryCardModal,
+      image: "https://bulma.io/images/placeholders/1280x960.png",
     };
   },
-  methods: {
-    openIllustration() {
-      this.EntryCardModal.methods.toggle();
-    }
-  }
 };
 </script>
 
