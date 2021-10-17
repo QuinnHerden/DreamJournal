@@ -84,16 +84,7 @@
             </div>
           </div>
 
-          <div class="field is-grouped">
-            <div class="control">
-              <button class="button is-primary">Submit</button>
-            </div>
-            <div class="control">
-              <button class="button is-link is-light" @click="cancel">
-                Cancel
-              </button>
-            </div>
-          </div>
+          <form-badge></form-badge>
         </form>
       </div>
     </div>
@@ -101,14 +92,18 @@
 </template>
 
 <script>
+import FormBadge from "../components/FormBadge.vue";
 
 export default {
+  components: { FormBadge },
+  data() {
+    return {
+      FormBadge,
+    };
+  },
   methods: {
     submit() {
-      this.$router.push("/journal");
-    },
-    cancel() {
-      this.$router.go(-1);
+      this.$router.push('/journal');
     },
   },
 };

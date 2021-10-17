@@ -18,7 +18,9 @@
               <p class="subtitle is-4">
                 Joined <time datetime="2016-1-1">2020-09-30</time>
               </p>
-              <p class="subtitle is-6"><a id="launch_modal">Edit Profile</a></p>
+              <p class="subtitle is-6">
+                <router-link to="/editprofile">Edit Profile</router-link>
+              </p>
             </div>
           </div>
 
