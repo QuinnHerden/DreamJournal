@@ -2,7 +2,7 @@
   <div id="friend_requests" class="container">
     <div class="card">
       <header class="card-header"  @click="toggle">
-        <p class="card-header-title">({{ Count }}) Friend Requests</p>
+        <p class="card-header-title">({{ count }}) Friend Requests</p>
         <button class="card-header-icon" aria-label="more options">
           <span class="icon">
             <i class="fas fa-angle-up" aria-hidden="false"></i>
@@ -10,7 +10,7 @@
         </button>
       </header>
 
-      <div class="card-content" :class="{ 'is-hidden': Hidden }">
+      <div class="card-content" :class="{ 'is-hidden': hidden }">
         <div class="media">
           <div class="media-content"></div>
         </div>
@@ -32,13 +32,13 @@ export default {
   components: { FriendRequestsRow },
   data() {
     return {
-      Count: 3,
-      Hidden: false,
+      count: 3,
+      hidden: false,
     };
   },
   methods: {
     toggle() {
-      this.Hidden = !this.Hidden;
+      this.hidden = !this.hidden;
     },
   },
 };

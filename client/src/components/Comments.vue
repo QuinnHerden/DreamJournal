@@ -2,14 +2,14 @@
   <div id="comments" class="container">
     <div class="card">
       <header class="card-header" @click="toggle">
-        <p class="card-header-title">({{ Count }}) Comments</p>
+        <p class="card-header-title">({{ count }}) Comments</p>
         <button class="card-header-icon" aria-label="more options">
           <span class="icon">
             <i class="fas fa-angle-up" :aria-hidden="true"></i>
           </span>
         </button>
       </header>
-      <div class="card-content" :class="{ 'is-hidden': Hidden }">
+      <div class="card-content" :class="{ 'is-hidden': hidden }">
         <comments-parent></comments-parent>
 
         <article class="media">
@@ -45,13 +45,13 @@ export default {
   components: { CommentsParent },
   data() {
     return {
-      Hidden: true,
-      Count: 3,
+      hidden: true,
+      count: 3,
     };
   },
   methods: {
     toggle() {
-      this.Hidden = !this.Hidden;
+      this.hidden = !this.hidden;
     },
   },
 };

@@ -8,27 +8,26 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{ Author }}</strong>
-          <br />{{ Comment }}<br />
+          <strong>{{ author }}</strong>
+          <br />{{ comment }}<br />
           <small><a>Like</a> · <a>Reply</a></small>
         </p>
       </div>
-
-      <comments-child></comments-child>
+    <comments-child></comments-child>
     </div>
   </article>
 </template>
 
 <script>
-import CommentsChild from "./CommentsChild.vue";
+import CommentsChild from './CommentsChild.vue';
 export default {
   components: { CommentsChild },
   data() {
     return {
-      Author: "Barbara_Nicely",
-      Comment: "Nice dream! That sounds super cool.",
-      Likes: 0,
-      DatePub: "1 Jan 2016 - 11:09 PM",
+      author: "Barbara_Nicely",
+      comment: "Nice dream! That sounds super cool.",
+      likes: 0,
+      datePublished: "1 Jan 2016 - 11:09 PM",
     };
   },
 };

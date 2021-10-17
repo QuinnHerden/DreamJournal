@@ -1,5 +1,5 @@
 <template>
-  <div class="modal is-clipped" :class="{ 'is-active': Active }">
+  <div class="modal is-clipped" :class="{ 'is-active': active }">
     <div class="modal-background"></div>
     <div class="modal-content">
       <p class="image is-4by3">
@@ -18,14 +18,14 @@
 export default {
   data() {
     return {
-      Active: true,
-      Src: null,
+      active: true,
+      src: null,
     };
   },
   methods: {
     toggle() {
-      this.Active = !this.Active;
-      console.log(this.Active);
+      this.active = !this.active;
+      console.log(this.active);
     },
   },
 };
