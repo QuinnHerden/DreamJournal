@@ -33,7 +33,7 @@
             <router-link class="navbar-item" to="/journal">
               Friends
             </router-link>
-            <router-link class="navbar-item" to="/journal">
+            <router-link class="navbar-item" to="/journal"> 
               Personal
             </router-link>
           </div>
@@ -60,6 +60,7 @@ export default {
   data() {
     return {
       Session,
+      isActive: false,
     };
   },
   methods: {},

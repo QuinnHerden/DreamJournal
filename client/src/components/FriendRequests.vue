@@ -1,7 +1,7 @@
 <template>
   <div id="friend_requests" class="container">
     <div class="card">
-      <header class="card-header"  @click="Toggle">
+      <header class="card-header"  @click="toggle">
         <p class="card-header-title">({{ Count }}) Friend Requests</p>
         <button class="card-header-icon" aria-label="more options">
           <span class="icon">
@@ -37,7 +37,7 @@ export default {
     };
   },
   methods: {
-    Toggle() {
+    toggle() {
       this.Hidden = !this.Hidden;
     },
   },

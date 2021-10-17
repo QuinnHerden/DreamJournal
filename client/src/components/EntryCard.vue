@@ -6,7 +6,7 @@
           <div class="media">
             <div class="media-left">
               <figure class="image is-48x48">
-                <a>
+                <a @click="openIllustration">
                   <img
                     src="https://bulma.io/images/placeholders/96x96.png"
                     alt="Dream Illustration"
@@ -47,13 +47,16 @@
     </div>
 
     <comments></comments>
+
+    <entry-card-modal></entry-card-modal>
   </section>
 </template>
 
 <script>
 import Comments from "./Comments.vue";
+import EntryCardModal from './EntryCardModal.vue';
 export default {
-  components: { Comments },
+  components: { Comments, EntryCardModal },
   data: () => {
     return {
       Title: "Dream Title",
@@ -66,8 +69,14 @@ export default {
       ],
       Tags: ["#list", "#of", "#tags"],
       Image: null,
+      EntryCardModal,
     };
   },
+  methods: {
+    openIllustration() {
+      this.EntryCardModal.methods.toggle();
+    }
+  }
 };
 </script>
 
