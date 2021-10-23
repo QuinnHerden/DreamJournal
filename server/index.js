@@ -1,15 +1,15 @@
 const express = require('express')
+const path = require('path')
+
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
-  res.send('My word!')
-})
-app.get('/newpaltz', (req, res) => {
-  res.send('No Paltz!')
-})
+// app
+//   .use('/', express.static(path.join(__dirname, '../docs'))) //current path + '../docs'
 
+app
+  .get('*', (req, res) => res.sendFile(path.join(__dirname, '../docs/index.html')))
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Journal listening at http://localhost:${port}`)
 })
