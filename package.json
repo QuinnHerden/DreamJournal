@@ -9,16 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/QuinnHerden/DreamJournal"
+    "url": "git+https://github.com/QuinnHerden/DreamJournal.git"
   },
-  "author": "Quinn Herden",
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "5.15.4",
-    "bulma": "0.9.3",
     "express": "4.17.1",
     "lodash": "^4.17.21",
-    "serve": "^12.0.1"
+    "dotenv": "10.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
