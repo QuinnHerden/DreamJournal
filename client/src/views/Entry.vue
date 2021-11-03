@@ -6,7 +6,7 @@
           <div class="field">
             <label class="label">Title</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Text input" />
+              <input class="input" type="text" placeholder="Text input" required v-model="title" />
             </div>
           </div>
 
@@ -17,7 +17,8 @@
                 class="input"
                 type="text"
                 placeholder="09/30/2021"
-                value=""
+                required
+                v-model="date"
               />
               <span class="icon is-small is-left">
                 <i class="fas fa-calendar"></i>
@@ -37,6 +38,7 @@
                   class="textarea"
                   placeholder="#place #your #tags"
                   rows="1"
+                  v-model="tags"
                 ></textarea>
               </div>
             </div>
@@ -48,6 +50,8 @@
               <textarea
                 class="textarea"
                 placeholder="Log your dream here..."
+                required
+                v-model="description"
               ></textarea>
             </div>
           </div>
@@ -56,30 +60,12 @@
             <div class="control">
               <label for="" class="label">Visibility</label>
               <label class="radio">
-                <input type="radio" name="visibility" checked />
+                <input type="radio" name="visibility" checked v-model="picked" />
                 Public
               </label>
               <label class="radio">
-                <input type="radio" name="visibility" />
+                <input type="radio" name="visibility" v-model="picked" />
                 Private
-              </label>
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label">Illustration</label>
-            <div class="file has-name">
-              <label class="file-label">
-                <input class="file-input" type="file" name="resume" />
-                <span class="file-cta">
-                  <span class="file-icon">
-                    <i class="fas fa-upload"></i>
-                  </span>
-                  <span class="file-label"> Choose a file… </span>
-                </span>
-                <span class="file-name">
-                  Screen Shot 2017-07-29 at 15.54.25.png
-                </span>
               </label>
             </div>
           </div>
@@ -92,18 +78,34 @@
 </template>
 
 <script>
+import Session from "../services/session";
 import FormBadge from "../components/FormBadge.vue";
+import { Add } from "../services/posts"
 
 export default {
   components: { FormBadge },
   data() {
     return {
       FormBadge,
+      user: Session.user,
+      title: null,
+      date: null,
+      tags: null,
+      description: null,
+      picked: null
     };
   },
   methods: {
     submit() {
-      this.$router.push('/journal');
+      Add({
+        user_handle: this.user.handle,
+        caption: this.title,
+        time: this.date,
+        tags: this.tags.split(" "),
+        description: [this.description],
+        isPublic: this.picked,
+      }),
+      this.$router.push("/journal");
     },
   },
 };

@@ -13,6 +13,7 @@ const list = [
             "plotkinm@newpaltz.edu"
         ],
         following: [{ handle: '@vp', isApproved: true }, { handle: '@johnsmith', isApproved: true },],
+        description: "Hello! I'm Moshe.",
         get name() { return this.firstName + ' ' + this.lastName },
     },
     {

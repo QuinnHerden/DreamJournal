@@ -6,14 +6,14 @@
           <div class="column is-5-tablet is-4-desktop is-3-widescreen">
             <form class="box" @submit.prevent="login">
               <div class="field">
-                <label for="" class="label">Email</label>
+                <label for="" class="label">Handle</label>
                 <div class="control has-icons-left">
                   <input
                     type="text"
-                    placeholder="address@email.com"
+                    placeholder="@username"
                     class="input"
                     required
-                    v-model="email"
+                    v-model="handle"
                   />
                   <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
@@ -56,13 +56,13 @@
 import Session from "../services/session";
 export default {
   data: () => ({
-    email: null,
-    password: null,
     Session,
+    handle: null,
+    password: null
   }),
   methods: {
     login() {
-      this.Session.Login(this.email, this.password);
+      this.Session.Login(this.handle, this.password);
       if (this.Session.user && this.Session.toRoute) {
         this.$router.push(this.Session.toRoute);
       } else if (this.Session.user) {
