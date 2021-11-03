@@ -2,41 +2,36 @@
   <section class="section">
     <div class="container">
       <div class="card">
-        <!-- <div class="card-image">
-          <figure class="image is-4by3">
-            <img :src="this.image" :alt="this.image_alt" />
-          </figure>
-        </div> -->
         <div class="card-content">
           <div class="media">
             <div class="media-left">
               <figure class="image is-48x48">
                 <img
-                  :src="author_profile_src"
-                  alt="profile picture of {{author}}"
+                  :src="author_pic"
+                  alt="profile picture of {{post.user_handle}}"
                 />
               </figure>
             </div>
             <div class="media-content">
-              <p class="title is-4">{{ title }}</p>
+              <p class="title is-4">{{ post.caption }}</p>
               <p class="subtitle is-6">
-                <router-link to="/profile">{{ author }}</router-link>
+                <router-link to="/profile">{{ post.user_handle }}</router-link>
               </p>
             </div>
           </div>
 
           <div class="content">
             <p>
-              <time datetime="2016-1-1">{{ datePublished }}</time>
+              <time datetime="2016-1-1">{{ post.time }}</time>
             </p>
 
-            <div v-for="desc in description" :key="desc">
+            <div v-for="desc in post.description" :key="desc">
               {{ desc }}
             </div>
 
             <p></p>
 
-            <div v-for="tag in tags" :key="tag">
+            <div v-for="tag in post.tags" :key="tag">
               {{ tag }}
             </div>
           </div>
@@ -54,23 +49,18 @@
 </template>
 
 <script>
-import { Get } from "../services/posts";
-import { GetByHandle } from "../services/users";
 import Comments from "./Comments.vue";
+import { GetByHandle } from "../services/users";
 export default {
   components: { Comments },
-  data: () => {
-    return {
-      id: 0,
-    };
+  props: {
+    post: Object,
   },
+  data: () => ({
+    
+  }),
   created: function () {
-    this.author = Get(this.id).user_handle;
-    this.author_profile_src = GetByHandle(this.author).pic;
-    this.title = Get(this.id).caption;
-    this.datePublished = Get(this.id).time;
-    this.description = Get(this.id).description;
-    this.tags = Get(this.id).tags;
+    this.author_pic = GetByHandle(this.post.user_handle).pic
   },
 };
 </script>

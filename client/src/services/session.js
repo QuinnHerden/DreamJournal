@@ -2,11 +2,11 @@ const session = {
     user: null,
     messages: [],
     toRoute: null,
-    Login(email, password) {
-
+    Login(handle, password) {
         this.user = {
             FirstName: 'Quinn',
-            Email: email,
+            Handle: handle,
+            Email: null,
             Password: password,
             id: 613,
         }
