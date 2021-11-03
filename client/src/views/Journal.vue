@@ -1,8 +1,5 @@
 <template>
   <div class="container">
-    <!-- <entry-card></entry-card>
-    <entry-card></entry-card> -->
-
     <div class="post" v-for="p in posts" :key="p.src">
       <entry-card :post="p" />
     </div>
