@@ -8,28 +8,33 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{ author }}</strong>
-          <br />{{ comment }}<br />
-          <small><a>Like</a> · <a>Reply</a></small>
+          <router-link :to="'/profile/' + author">{{ author }}</router-link>
+          <br />{{ reply }}<br />
+          <!-- <small><router-link to="">Reply</router-link></small> -->
         </p>
       </div>
-    <comments-child></comments-child>
+    <!-- <comments-child></comments-child> -->
     </div>
   </article>
 </template>
 
 <script>
-import CommentsChild from './CommentsChild.vue';
+// import CommentsChild from './CommentsChild.vue';
+import { GetByHandle } from "../services/users";
+import { GetById } from '../services/comments'
 export default {
-  components: { CommentsChild },
-  data() {
-    return {
-      author: "Barbara_Nicely",
-      comment: "Nice dream! That sounds super cool.",
-      likes: 0,
-      datePublished: "1 Jan 2016 - 11:09 PM",
-    };
-  },
+  // components: { CommentsChild },
+  data: () => ({
+    
+  }),
+    created: function () {
+      this.owner = GetByHandle("@JewPaltz"),
+      this.comment = GetById("0"),
+
+      this.author = this.owner.handle,
+      this.reply = this.comment.reply,
+      this.datePublished = this.comment.published
+    },
 };
 </script>
 

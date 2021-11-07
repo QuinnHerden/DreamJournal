@@ -15,7 +15,6 @@
           cursus libero. Vestibulum ante ipsum primis in faucibus orci luctus et
           ultrices posuere cubilia Curae; Phasellus lacinia non nisl id feugiat.
           <br />
-          <small><a>Like</a> · <a>Reply</a></small>
         </p>
       </div>
     </div>

@@ -15,7 +15,7 @@
             <div class="media-content">
               <p class="title is-4">{{ post.caption }}</p>
               <p class="subtitle is-6">
-                <router-link to="/profile">{{ post.user_handle }}</router-link>
+                <router-link :to="'/profile/' + post.user_handle">{{ post.user_handle }}</router-link>
               </p>
             </div>
           </div>
@@ -37,9 +37,9 @@
           </div>
         </div>
         <footer class="card-footer">
-          <a href="#" class="card-footer-item">Share</a>
-          <a href="#" class="card-footer-item">Edit</a>
-          <a href="#" class="card-footer-item">Delete</a>
+          <router-link class="card-footer-item" to="">Share</router-link>
+          <router-link class="card-footer-item" to="">Edit</router-link>
+          <router-link class="card-footer-item" to="">Delete</router-link>
         </footer>
       </div>
     </div>
