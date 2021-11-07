@@ -7,6 +7,7 @@
 </style>
 
 <script>
+import '../public/mystyles.scss'
 import Nav from "./components/Nav";
 
 export default {
