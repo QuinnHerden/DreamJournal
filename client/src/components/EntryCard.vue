@@ -55,11 +55,9 @@
           </button>
         </header>
         <div class="card-content" :class="{ 'is-hidden': hidden }">
-          <!-- <div class="is-flex-direction-row is-flex"> -->
             <div class="comment" v-for="c in commentsArr" :key="c._id">
               <comments :comment="c" /> <br>
             </div>
-          <!-- </div> -->
 
           <article class="media">
             <figure class="media-left">
