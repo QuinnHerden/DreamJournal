@@ -1,5 +1,5 @@
 <template>
-  <div id="friend_requests" class="container">
+  <div id="friend_requests" class="container" :class="{ 'is-hidden': count==0 }">
     <div class="card">
       <header class="card-header" @click="toggle">
         <a class="card-header-title">({{ count }}) Friend Requests</a>

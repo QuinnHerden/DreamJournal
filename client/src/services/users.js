@@ -22,7 +22,7 @@ const list = [
         avatar: 'https://i1.sndcdn.com/avatars-000626412048-iqg5dk-t500x500.jpg',
         description: 'I am the creator of this website.',
         friendRequests: [],
-        friendList: ['@Jose'],
+        friendList: [{name: '@Jose', date: Date()}],
     },
     {
         handle: '@Jose',

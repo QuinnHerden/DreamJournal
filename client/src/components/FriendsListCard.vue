@@ -1,20 +1,31 @@
 <template>
-  <div class="tile is-child is-parent is-vertical has-text-centered box">
+  <div class="is-parent is-vertical has-text-centered box">
     <div class="tile is-child">
       <figure class="image is-48x48 is-inline-block">
         <img
           class="is-rounded"
-          src="https://bulma.io/images/placeholders/96x96.png"
-          alt="Placeholder image"
+          :src="userAvatar"
+          alt="Avatar"
         />
       </figure>
     </div>
-    <div class="tile is-child">friend_name</div>
+    <router-link to="" class="tile is-child">{{ card.name }}</router-link>
   </div>
 </template>
 
 <script>
-export default {};
+import { GetByHandle } from "../services/users";
+
+export default {
+  props: {
+    card: Object,
+  },
+  data: () => ({}),
+  created() {
+        this.userAvatar = GetByHandle(this.card.name).avatar;
+
+  },
+};
 </script>
 
 <style>

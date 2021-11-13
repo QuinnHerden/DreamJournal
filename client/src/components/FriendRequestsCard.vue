@@ -9,7 +9,7 @@
         />
       </figure>
     </div>
-    <div class="tile is-child">{{ card.name }}</div>
+    <router-link to="" class="tile is-child">{{ card.name }}</router-link>
     <div class="tile is-parent">
       <div class="tile is-child">
         <button class="button is-outlined">

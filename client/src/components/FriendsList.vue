@@ -8,24 +8,31 @@
           </div>
         </div>
 
-        <div class="content">
-          <div class="tile is-ancestor">
-            <div class="tile is-vertical is-12 is-parent">
-              <friends-list-row></friends-list-row>
-              <friends-list-row></friends-list-row>
-              <friends-list-row></friends-list-row>
-            </div>
+        <div class="content is-flex is-flex-wrap-wrap	">
+          <div class="card is-flex flex-wrap" v-for="c in friends" :key="c.i">
+            <friends-list-card :card="c" />
           </div>
         </div>
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import FriendsListRow from "./FriendsListRow.vue";
+import Session from "../services/session";
+import FriendsListCard from "./FriendsListCard.vue";
 export default {
-  components: { FriendsListRow },
+  components: { FriendsListCard },
+  data() {
+    return {
+      Session,
+      friends: [],
+    };
+  },
+  mounted() {
+    this.friends = this.Session.user.friendList;
+  },
 };
 </script>
 
