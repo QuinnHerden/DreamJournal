@@ -5,6 +5,7 @@ import Journal from '../views/Journal.vue'
 import Entry from '../views/Entry.vue'
 import Profile from '../views/Profile.vue'
 import ProfileEdit from '../views/ProfileEdit.vue'
+import ProfileOther from '../views/ProfileOther'
 import session from '../services/session'
 
 const routes = [
@@ -36,6 +37,12 @@ const routes = [
     name: 'EditProfile',
     component: ProfileEdit,
     meta: { requiresLogin: true }
+  },
+  {
+    path: '/profile/',
+    name: 'ProfileOther',
+    component: ProfileOther,
+    meta: {requiresLogin: true}
   },
   {
     path: '/login',
