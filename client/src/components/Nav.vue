@@ -25,18 +25,7 @@
           <router-link class="navbar-link" to="/journal">
             Journals
           </router-link>
-
-          <div class="navbar-dropdown">
-            <router-link class="navbar-item" to="/journal">
-              Global
-            </router-link>
-            <router-link class="navbar-item" to="/journal">
-              Friends
-            </router-link>
-            <router-link class="navbar-item" to="/journal"> 
-              Personal
-            </router-link>
-          </div>
+          
         </div>
       </div>
 

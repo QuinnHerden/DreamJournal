@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="post" v-for="p in posts" :key="p.src">
+    <div class="post" v-for="p in posts" :key="p._id">
       <entry-card :post="p" />
     </div>
 
@@ -15,8 +15,11 @@ export default {
     EntryCard,
   },
   data: () => ({
-    posts: GetAll(),
+    posts: []
   }),
+  async mounted(){
+    this.posts = await GetAll()
+  }
 };
 </script>
 

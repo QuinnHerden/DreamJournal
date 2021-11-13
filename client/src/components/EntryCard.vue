@@ -7,32 +7,33 @@
             <div class="media-left">
               <figure class="image is-48x48">
                 <img
-                  :src="author_pic"
-                  alt="profile picture of {{post.user_handle}}"
+                  :src="userAvatar"
+                  alt="Avatar"
                 />
               </figure>
             </div>
             <div class="media-content">
-              <p class="title is-4">{{ post.caption }}</p>
+              <p class="title is-4">{{ post.title }}</p>
               <p class="subtitle is-6">
-                <router-link :to="'/profile/' + post.user_handle">{{ post.user_handle }}</router-link>
+                <router-link :to="'/profile/' + post.userHandle">{{
+                  post.userHandle
+                }}</router-link>
               </p>
             </div>
           </div>
 
           <div class="content">
             <p>
-              <time datetime="2016-1-1">{{ post.time }}</time>
+              <time datetime="2016-1-1">{{ post.dateOccured }}</time>
             </p>
 
-            <div v-for="desc in post.description" :key="desc">
-              {{ desc }}
-            </div>
+            <div class="description">{{ post.description }}</div>
 
             <p></p>
-
-            <div v-for="tag in post.tags" :key="tag">
-              {{ tag }}
+            <div>
+              <a v-for="tag in post.tags" :key="tag">
+                #{{ tag }} 
+              </a>
             </div>
           </div>
         </div>
@@ -56,11 +57,9 @@ export default {
   props: {
     post: Object,
   },
-  data: () => ({
-    
-  }),
+  data: () => ({}),
   created: function () {
-    this.author_pic = GetByHandle(this.post.user_handle).pic
+    this.userAvatar = GetByHandle(this.post.userHandle).pic;
   },
 };
 </script>
