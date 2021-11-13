@@ -1,5 +1,5 @@
 <template>
-  <div class="tile is-child is-parent is-vertical has-text-centered box">
+  <div class="is-parent is-vertical has-text-centered box">
     <div class="tile is-child">
       <figure class="image is-48x48 is-inline-block">
         <img

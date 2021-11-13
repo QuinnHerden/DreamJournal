@@ -10,8 +10,8 @@ const list = [
         visible: true,
         avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
         description: 'Hello! Welcome to my profile.',
-        friendRequests: [{name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Jose', date: Date()}],
-        friendList: ['@Jose'],
+        friendRequests: [{name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Jose', date: Date()}],
+        friendList: [{name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Jose', date: Date()}],
     },
     {
         handle: '@Quinn',

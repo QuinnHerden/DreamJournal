@@ -1,11 +1,15 @@
 <template>
   <div id="friend_requests" class="container">
     <div class="card">
-      <header class="card-header"  @click="toggle">
+      <header class="card-header" @click="toggle">
         <a class="card-header-title">({{ count }}) Friend Requests</a>
         <button class="card-header-icon" aria-label="more options">
           <span class="icon">
-            <i class="fas" :class="{'fa-angle-up': !hidden, 'fa-angle-down': hidden}" aria-hidden="true"></i>
+            <i
+              class="fas"
+              :class="{ 'fa-angle-up': !hidden, 'fa-angle-down': hidden }"
+              aria-hidden="true"
+            ></i>
           </span>
         </button>
       </header>
@@ -14,11 +18,9 @@
         <div class="media">
           <div class="media-content"></div>
         </div>
-        <div class="content">
-          <div class="tile is-ancestor">
-            <div class="tile is-vertical is-parent">
-              <friend-requests-row></friend-requests-row>
-            </div>
+        <div class="content is-flex is-flex-wrap-wrap	">
+          <div class="card is-flex flex-wrap" v-for="c in requests" :key="c.i">
+            <friend-requests-card :card="c" />
           </div>
         </div>
       </div>
@@ -28,18 +30,23 @@
 
 <script>
 import Session from "../services/session";
-import FriendRequestsRow from "./FriendRequestsRow.vue";
+import FriendRequestsCard from "./FriendRequestsCard.vue";
+
 export default {
-  components: { FriendRequestsRow },
+  components: {
+    FriendRequestsCard,
+  },
   data() {
     return {
       Session,
+      requests: [],
       hidden: false,
       count: null,
     };
   },
   mounted() {
-    this.count = this.Session.user.friendRequests.length
+    this.requests = this.Session.user.friendRequests;
+    this.count = this.requests.length;
   },
   methods: {
     toggle() {
