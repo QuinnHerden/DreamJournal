@@ -39,7 +39,7 @@ const routes = [
     meta: { requiresLogin: true }
   },
   {
-    path: '/profile/',
+    path: '/profile/@Quinn',
     name: 'ProfileOther',
     component: ProfileOther,
     meta: {requiresLogin: true}

@@ -6,6 +6,7 @@ const session = {
     user: null,
     messages: [],
     toRoute: null,
+    userProfile: null,
     Login(handle, password){
 
         try {
