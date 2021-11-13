@@ -1,58 +1,31 @@
 <template>
-  <div id="comments" class="container">
-    <div class="card">
-      <header class="card-header" @click="toggle">
-        <a class="card-header-title">({{ count }}) Comments</a>
-        <button class="card-header-icon is-active" aria-label="more options">
-          <span class="icon">
-            <i class="fas" :class="{'fa-angle-up': !hidden, 'fa-angle-down': hidden}" aria-hidden="true"></i>
-          </span>
-        </button>
-      </header>
-      <div class="card-content" :class="{ 'is-hidden': hidden }">
-        <comments-parent></comments-parent>
-
-        <article class="media">
-          <figure class="media-left">
-            <p class="image is-64x64">
-              <img src="https://bulma.io/images/placeholders/128x128.png" />
-            </p>
-          </figure>
-          <div class="media-content">
-            <div class="field">
-              <p class="control">
-                <textarea
-                  class="textarea"
-                  placeholder="Add a comment..."
-                ></textarea>
-              </p>
-            </div>
-            <div class="field">
-              <p class="control">
-                <button class="button">Post comment</button>
-              </p>
-            </div>
-          </div>
-        </article>
+  <article class="media">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <img :src="author.avatar" alt="Avatar" />
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <router-link :to="'/profile/'">{{ author.userHandle }}</router-link>
+          <br />{{ comment.text }}<br />
+        </p>
       </div>
     </div>
-  </div>
+  </article>
 </template>
 
 <script>
-import CommentsParent from "./CommentsParent.vue";
+import { GetByHandle } from "../services/users";
+
 export default {
-  components: { CommentsParent },
-  data() {
-    return {
-      hidden: true,
-      count: 3,
-    };
+  props: {
+    comment: Object,
   },
-  methods: {
-    toggle() {
-      this.hidden = !this.hidden;
-    },
+  data: () => ({}),
+  created() {
+    this.author = GetByHandle(this.comment.userHandle);
   },
 };
 </script>

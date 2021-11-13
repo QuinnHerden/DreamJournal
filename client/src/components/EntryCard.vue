@@ -6,10 +6,7 @@
           <div class="media">
             <div class="media-left">
               <figure class="image is-48x48">
-                <img
-                  :src="userAvatar"
-                  alt="Avatar"
-                />
+                <img :src="userAvatar" alt="Avatar" />
               </figure>
             </div>
             <div class="media-content">
@@ -31,9 +28,7 @@
 
             <p></p>
             <div>
-              <a v-for="tag in post.tags" :key="tag">
-                #{{ tag }} 
-              </a>
+              <a v-for="tag in post.tags" :key="tag"> #{{ tag }} </a>
             </div>
           </div>
         </div>
@@ -45,21 +40,81 @@
       </div>
     </div>
 
-    <comments></comments>
+    <div id="comments" class="container">
+      <div class="card">
+        <header class="card-header" @click="toggle">
+          <a class="card-header-title">({{ count }}) Comments</a>
+          <button class="card-header-icon is-active" aria-label="more options">
+            <span class="icon">
+              <i
+                class="fas"
+                :class="{ 'fa-angle-up': !hidden, 'fa-angle-down': hidden }"
+                aria-hidden="true"
+              ></i>
+            </span>
+          </button>
+        </header>
+        <div class="card-content" :class="{ 'is-hidden': hidden }">
+          <!-- <div class="is-flex-direction-row is-flex"> -->
+            <div class="comment" v-for="c in commentsArr" :key="c._id">
+              <comments :comment="c" /> <br>
+            </div>
+          <!-- </div> -->
+
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img :src="avatar" />
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="field">
+                <p class="control">
+                  <textarea
+                    class="textarea"
+                    placeholder="Add a comment..."
+                  ></textarea>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <button class="button is-primary">Post comment</button>
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
 import Comments from "./Comments.vue";
+import Session from "../services/session";
 import { GetByHandle } from "../services/users";
+// import Comments from './Comments.vue';
 export default {
   components: { Comments },
   props: {
     post: Object,
   },
-  data: () => ({}),
+  data: () => ({
+    hidden: true,
+    commentsArr: [],
+    count: null,
+    user: Session.user,
+  }),
   created() {
+    this.commentsArr = this.post.comments;
+    this.count = this.commentsArr.length;
     this.userAvatar = GetByHandle(this.post.userHandle).avatar;
+    this.avatar = this.user.avatar;
+  },
+  methods: {
+    toggle() {
+      this.hidden = !this.hidden;
+    },
   },
 };
 </script>

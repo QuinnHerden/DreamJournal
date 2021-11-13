@@ -13,7 +13,7 @@ const list = [
         description: "There I was... sat in the tower....",
         tags: ['spicy', 'scary', 'lucid'],
         visible: true,
-        comments: []
+        comments: [{userHandle: "@Quinn", text: "Good stuff! I love it."}, {userHandle: "@JewPaltz", text: "Thanks :)"}],
     },
     {
         userHandle: "@JewPaltz",
