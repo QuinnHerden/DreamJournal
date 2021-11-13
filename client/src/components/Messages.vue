@@ -2,10 +2,11 @@
     <div class="mesages">
         <div class="notification is-light" :class="`is-${message.type}`" v-for="(message, i) in messages" :key="i">
             <button class="delete" @click.prevent="done(i)"></button>
-            {{message.text + "hi"}}
+            {{message.text}}
         </div>
     </div>
 </template>
+
 <script>
 import session from "../services/session";
 export default {
@@ -19,3 +20,10 @@ export default {
         }
     }
 }
+</script>
+
+<style>
+    div.messages div.notification.is-light {
+        margin-bottom: 0px;
+    }
+</style>
