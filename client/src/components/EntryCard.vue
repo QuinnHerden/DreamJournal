@@ -58,8 +58,8 @@ export default {
     post: Object,
   },
   data: () => ({}),
-  created: function () {
-    this.userAvatar = GetByHandle(this.post.userHandle).pic;
+  created() {
+    this.userAvatar = GetByHandle(this.post.userHandle).avatar;
   },
 };
 </script>

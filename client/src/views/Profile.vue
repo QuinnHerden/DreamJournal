@@ -8,8 +8,8 @@
               <figure class="image is-128x128">
                 <img
                   class="is-rounded"
-                  :src="user.pic"
-                  alt="Placeholder image"
+                  :src="user.avatar"
+                  alt="Avatar"
                 />
               </figure>
             </div>

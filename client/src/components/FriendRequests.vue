@@ -27,14 +27,19 @@
 </template>
 
 <script>
+import Session from "../services/session";
 import FriendRequestsRow from "./FriendRequestsRow.vue";
 export default {
   components: { FriendRequestsRow },
   data() {
     return {
-      count: 3,
+      Session,
       hidden: false,
+      count: null,
     };
+  },
+  mounted() {
+    this.count = this.Session.user.friendRequests.length
   },
   methods: {
     toggle() {

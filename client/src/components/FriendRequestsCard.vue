@@ -4,12 +4,12 @@
       <figure class="image is-48x48 is-inline-block">
         <img
           class="is-rounded"
-          src="https://bulma.io/images/placeholders/96x96.png"
-          alt="Placeholder image"
+          :src="userAvatar"
+          alt="Avatar"
         />
       </figure>
     </div>
-    <div class="tile is-child">friend_name</div>
+    <div class="tile is-child">{{ card.name }}</div>
     <div class="tile is-parent">
       <div class="tile is-child">
         <button class="button is-outlined">
@@ -30,7 +30,18 @@
 </template>
 
 <script>
-export default {};
+import { GetByHandle } from "../services/users";
+
+export default {
+  props: {
+    card: Object,
+  },
+  data: () => ({}),
+  created() {
+        this.userAvatar = GetByHandle(this.card.name).avatar;
+
+  },
+};
 </script>
 
 <style>
