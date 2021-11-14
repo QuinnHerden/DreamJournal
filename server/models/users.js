@@ -12,6 +12,7 @@ const list = [
         firstName: 'Moshe',
         lastName: 'Plotkin',
         visible: true,
+        dateCreated: Date(),
         avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
         description: 'Hello! Welcome to my profile.',
         friendRequests: [{name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Jose', date: Date()}],
@@ -23,6 +24,7 @@ const list = [
         firstName: 'Quinn',
         lastName: 'Herden',
         visible: true,
+        dateCreated: Date(),
         avatar: 'https://i1.sndcdn.com/avatars-000626412048-iqg5dk-t500x500.jpg',
         description: 'I am the creator of this website.',
         friendRequests: [],
@@ -48,8 +50,28 @@ module.exports.Get = user_id => collection.findOne({ _id: new ObjectId(user_id) 
 module.exports.GetByHandle = (handle) => collection.findOne({ handle }).then(x => ({ ...x, password: undefined }))
 
 module.exports.Add = async function Add(user) {
+    
+    if (!user.handle) {
+        return Promise.reject({ code: 422, msg: "Handle is required" })
+    }
+    const check = await this.GetByHandle(user.handle)
+    if (check.handle == user.handle) {
+        return Promise.reject({ code: 422, msg: "Handle already exists" })
+    }
+    
     if (!user.firstName) {
         return Promise.reject({ code: 422, msg: "First Name is required" })
+    } else if (!user.lastName) {
+        return Promise.reject({ code: 422, msg: "Last Name is required" })
+    } else if (!user.lastName) {
+        return Promise.reject({ code: 422, msg: "Visibility is required" })
+    }
+
+    if (!user.avatar) {
+        user.avatar = ""
+    }
+    if (!user.description) {
+        user.description = "Welcome to my profile :)"
     }
 
     const hash = await bcrypt.hash(user.password, +process.env.SALT_ROUNDS)
@@ -59,6 +81,8 @@ module.exports.Add = async function Add(user) {
     })
 
     user.password = hash
+    user.friendRequests=[]
+    user.friendList=[]
     user.dateCreated = Date()
 
     const user2 = await collection.insertOne(user)

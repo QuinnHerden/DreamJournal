@@ -44,46 +44,48 @@ const list = [
     },
 ]
 
-const addOwnerPipeline = [
-    {
-        "$lookup": {
-            from: "users",
-            localField: 'userHandle',
-            foreignField: 'handle',
-            as: 'user',
-        }
-    },
-    { $unwind: "$user" },
-    { $project: { "owner.password": 0 } }
-]
+// const addOwnerPipeline = [
+//     {
+//         "$lookup": {
+//             from: "users",
+//             localField: 'userHandle',
+//             foreignField: 'handle',
+//             as: 'user',
+//         }
+//     },
+//     { $unwind: "$user" },
+//     { $project: { "owner.password": 0 } }
+// ]
 
 module.exports.GetAll = function GetAll() {
-    return collection.aggregate(addOwnerPipeline).toArray()
+    // return collection.aggregate(addOwnerPipeline).toArray()
+    return collection.find().toArray()
 }
 
-module.exports.GetWall = function GetWall(handle) {
-    return collection.aggregate(addOwnerPipeline).match({ userHandle: handle }).toArray()
-}
+// module.exports.GetWall = function GetWall(handle) {
+    // return collection.aggregate(addOwnerPipeline).match({ userHandle: handle }).toArray()
+    // return collection.find().match({ userHandle: handle }).toArray()
+// }
 
 // TODO: convert to MongoDB
-module.exports.GetFeed = function GetFeed(handle) {
-    const query = Users.collection.aggregate([
-        { $match: { handle } },
-        {
-            "$lookup": {
-                from: "posts",
-                localField: 'following.handle',
-                foreignField: 'userHandle',
-                as: 'posts'
-            }
-        },
-        { $unwind: '$posts' },
-        { $replaceRoot: { newRoot: "$posts" } },
-    ].concat(addOwnerPipeline))
-    return query.toArray()
-    //return listWithOwner()
-    //.match(post=> GetByHandle(handle).following.some(f=> f.handle == post.user_handle && f.isApproved) )
-}
+// module.exports.GetFeed = function GetFeed(handle) {
+//     const query = Users.collection.aggregate([
+//         { $match: { handle } },
+//         {
+//             "$lookup": {
+//                 from: "posts",
+//                 localField: 'following.handle',
+//                 foreignField: 'userHandle',
+//                 as: 'posts'
+//             }
+//         },
+//         { $unwind: '$posts' },
+//         { $replaceRoot: { newRoot: "$posts" } },
+//     ].concat(addOwnerPipeline))
+//     return query.toArray()
+//     //return listWithOwner()
+//     //.match(post=> GetByHandle(handle).following.some(f=> f.handle == post.user_handle && f.isApproved) )
+// }
 
 
 module.exports.Get = function Get(post_id) { return collection.findOne({ _id: new ObjectId(post_id) }) }
@@ -91,7 +93,23 @@ module.exports.Get = function Get(post_id) { return collection.findOne({ _id: ne
 module.exports.Add = async function Add(post) {
     if (!post.userHandle) {
         throw { code: 422, msg: "Post must have an Owner" }
+    } else if (!post.title) {
+        throw { code: 422, msg: "Post must have a Title" }
+    } else if (!post.dateOccured) {
+        throw { code: 422, msg: "Post must have a Date" }
+    } else if (!post.description) {
+        throw { code: 422, msg: "Post must have a Description" }
     }
+
+    if (!post.tags) {
+        post.tags = []
+    }
+    if (!post.visible) {
+        post.visible = true
+    }
+    
+    post.comments = []
+
     post.datePosted = Date()
 
     const response = await collection.insertOne(post)
