@@ -30,6 +30,15 @@ Content-Type: application/json
     }
 
 ###
+POST http://dreamjournal-quinn.herokuapp.com/users/login
+Content-Type: application/json
+
+    { 
+        "handle": "@JewPaltz",
+        "password": "me"
+    }
+
+###
 PATCH http://localhost:3000/users/61952e4ca2d79bdfc883368b
 Content-Type: application/json
 
