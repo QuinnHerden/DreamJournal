@@ -123,11 +123,9 @@ module.exports.Login = async function Login(handle, password) {
         throw { code: 401, msg: "Wrong Password" }
     }
 
-    const data = { ...user, password: undefined }
+    // const data = { ...user, password: undefined }
 
-    return { user: data }
-
-
+    return { "user": user }
 }
 
 module.exports.Seed = async () => {

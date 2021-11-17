@@ -1,5 +1,4 @@
-/* B"H
-*/
+import { api } from "./myFetch";
 
 const list = [
     {
@@ -73,16 +72,7 @@ export function Delete(user_id) {
     return user;
 }
 
-export function Login(handle, password) {
-    console.log({ handle, password })
-    const user = list.find(x => x.handle == handle);
-    if (!user) throw { code: 401, msg: "Sorry there is no user with that handle" };
-
-    if (!(password == user.password)) {
-        throw { code: 401, msg: "Wrong Password" };
-    }
-
-    const data = { ...user, password: undefined };
-
-    return { user: data };
+export function Login(hand, pass) {
+    return api('users/login', { "handle": hand, "password": pass }, 'POST')
+    
 }
