@@ -1,6 +1,6 @@
 <template>
   <Nav />
-  <messages />
+  <!-- <messages /> -->
   <router-view />
 </template>
 
@@ -9,12 +9,12 @@
 
 <script>
 import "../public/mystyles.scss";
-import Messages from "./components/Messages.vue";
+// import Messages from "./components/Messages.vue";
 import Nav from "./components/Nav";
 export default {
   components: {
     Nav,
-    Messages,
+    // Messages,
   },
 };
 </script>

@@ -12,7 +12,7 @@
             <div class="media-content">
               <p class="title is-4">{{ post.title }}</p>
               <p class="subtitle is-6">
-                <router-link :to="'/profile/' + post.userHandle">{{
+                <router-link to="">{{
                   post.userHandle
                 }}</router-link>
               </p>
@@ -28,14 +28,14 @@
 
             <p></p>
             <div>
-              <a v-for="tag in post.tags" :key="tag"> #{{ tag }} </a>
+              <router-link to="" v-for="tag in post.tags" :key="tag"> #{{ tag }} </router-link>
             </div>
           </div>
         </div>
         <footer class="card-footer">
           <router-link class="card-footer-item" to="">Share</router-link>
-          <router-link class="card-footer-item" to="">Edit</router-link>
-          <router-link class="card-footer-item" to="">Delete</router-link>
+          <router-link class="card-footer-item" to="">{{ actionString }}</router-link>
+          <!-- <router-link class="card-footer-item" to="">Delete</router-link> -->
         </footer>
       </div>
     </div>
@@ -102,12 +102,18 @@ export default {
     commentsArr: [],
     count: null,
     user: Session.user,
+    actionString: null,
   }),
   created() {
     this.commentsArr = this.post.comments;
     this.count = this.commentsArr.length;
     this.userAvatar = GetByHandle(this.post.userHandle).avatar;
     this.avatar = this.user.avatar;
+    if (this.post.userHandle == this.user.handle) {
+      this.actionString = "Edit"
+    } else {
+      this.actionString = "Like"
+    }
   },
   methods: {
     toggle() {
