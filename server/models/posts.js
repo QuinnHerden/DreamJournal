@@ -91,6 +91,7 @@ module.exports.GetAll = function GetAll() {
 module.exports.Get = function Get(post_id) { return collection.findOne({ _id: new ObjectId(post_id) }) }
 
 module.exports.Add = async function Add(post) {
+    console.log(post)
     if (!post.userHandle) {
         throw { code: 422, msg: "Post must have an Owner" }
     } else if (!post.title) {

@@ -2,11 +2,17 @@
   <section class="section">
     <div class="container">
       <div class="card">
-        <form class="box card-content" @submit.prevent="submit">
+        <form class="box card-content" @submit.prevent="sub">
           <div class="field">
             <label class="label">Title</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Text input" required v-model="title" />
+              <input
+                class="input"
+                type="text"
+                placeholder="Text input"
+                required
+                v-model="title"
+              />
             </div>
           </div>
 
@@ -60,11 +66,22 @@
             <div class="control">
               <label for="" class="label">Visibility</label>
               <label class="radio">
-                <input type="radio" name="visibility" checked v-model="picked" />
+                <input
+                  type="radio"
+                  name="visibility"
+                  checked
+                  v-model="visible"
+                  v-bind:value="true"
+                />
                 Public
               </label>
               <label class="radio">
-                <input type="radio" name="visibility" v-model="picked" />
+                <input
+                  type="radio"
+                  name="visibility"
+                  v-model="visible"
+                  v-bind:value="false"
+                />
                 Private
               </label>
             </div>
@@ -80,10 +97,13 @@
 <script>
 import Session from "../services/session";
 import FormBadge from "../components/FormBadge.vue";
-import { Add } from "../services/posts"
+import { Add } from "../services/posts";
 
 export default {
   components: { FormBadge },
+  created() {
+    this.visible = true
+  },
   data() {
     return {
       FormBadge,
@@ -92,19 +112,20 @@ export default {
       date: null,
       tags: null,
       description: null,
-      picked: null
     };
   },
   methods: {
-    submit() {
-      Add({
-        user_handle: this.user.handle,
-        caption: this.title,
-        time: this.date,
+    async sub() {
+      const entry = {
+        userHandle: this.user.handle,
+        title: this.title,
+        dateOccured: this.date,
+        description: this.description,
         tags: this.tags.split(" "),
-        description: [this.description],
-        isPublic: this.picked,
-      }),
+        visible: this.visible
+      };
+      // console.log(entry)
+      await Add(entry);
       this.$router.push("/journal");
     },
   },

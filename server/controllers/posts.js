@@ -31,7 +31,7 @@ app
     })
     .post("/", (req, res, next) => {
         model.Add(req.body)
-            .then(x => res.status(201).send(x))
+            .then(x => {res.send(x)})
             .catch(next)
     })
     .patch("/:id", (req, res, next) => {
