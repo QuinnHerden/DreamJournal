@@ -6,7 +6,7 @@
           <div class="column is-5-tablet is-4-desktop is-3-widescreen">
             <form class="box" @submit.prevent="login">
               <div class="field">
-                <label for="" class="label">Handle</label>
+                <label for="" class="label">Username</label>
                 <div class="control has-icons-left">
                   <input
                     type="text"
@@ -61,7 +61,7 @@ export default {
     password: null
   }),
   methods: {
-    login() {
+    async login() {
       this.Session.Login(this.handle, this.password);
       if (this.Session.user && this.Session.toRoute) {
         this.$router.push(this.Session.toRoute);

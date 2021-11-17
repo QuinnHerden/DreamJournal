@@ -43,27 +43,14 @@ export function Get(user_id) { return list[user_id]; }
 export function GetByHandle(handle) { return ({ ...list.find(x => x.handle == handle), password: undefined }); }
 
 export function Add(user) {
-    list.push(user);
-    return { ...user, password: undefined };
+    // list.push(user);
+    // return { ...user, password: undefined };
+    return api('users/register', user)
 }
 
 
 export function Update(user_id, user) {
-    const oldObj = list[user_id];
-    if (user.firstName) {
-        oldObj.firstName = user.firstName;
-    }
-    if (user.lastName) {
-        oldObj.lastName = user.lastName;
-    }
-    if (user.handle) {
-        oldObj.handle = user.handle;
-    }
-    if (user.pic) {
-        oldObj.pic = user.pic;
-    }
-    //list[user_id] = newObj ;
-    return { ...oldObj, password: undefined };
+    return api('users/' + user_id, user, 'PATCH')
 }
 
 export function Delete(user_id) {
@@ -73,6 +60,6 @@ export function Delete(user_id) {
 }
 
 export function Login(hand, pass) {
-    return api('users/login', { "handle": hand, "password": pass }, 'POST')
+    return api('users/login', { "handle": hand, "password": pass, }, 'POST')
     
 }

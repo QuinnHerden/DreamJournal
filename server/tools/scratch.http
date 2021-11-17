@@ -30,11 +30,11 @@ Content-Type: application/json
     }
 
 ###
-PATCH http://localhost:3000/users/61902b0ed007f1ccdec083de
+PATCH http://localhost:3000/users/61952e4ca2d79bdfc883368b
 Content-Type: application/json
 
 {
-    "firstName": "Quinn"
+    "password": "dunk"
 }
 
 ###

@@ -4,26 +4,23 @@
       <div class="container">
         <div class="columns is-centered">
           <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+
             <form action="" class="box" @submit.prevent="signup">
               <div class="field">
                 <label class="label">Username</label>
                 <div class="control has-icons-left has-icons-right">
                   <input
-                    class="input is-success"
+                    class="input"
                     type="text"
-                    placeholder="Text input"
+                    placeholder="@username"
                     v-model="handle"
                   />
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                   </span>
-                  <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                  </span>
                 </div>
-                <p class="help is-success">This handle is available</p>
               </div>
-
+              
               <div class="field">
                 <label for="" class="label">Password</label>
                 <div class="control has-icons-left has-icons-right">
@@ -37,14 +34,39 @@
                   <span class="icon is-small is-left">
                     <i class="fas fa-lock"></i>
                   </span>
-                  <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">First Name</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="John"
+                    v-model="firstName"
+                  />
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-info-circle"></i>
                   </span>
                 </div>
-                <p class="help is-danger">
-                  Password must contain eight characters
-                </p>
               </div>
+
+              <div class="field">
+                <label class="label">Last Name</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="Smith"
+                    v-model="lastName"
+                  />
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-info-circle"></i>
+                  </span>
+                </div>
+              </div>
+
 
               <div class="field">
                 <div class="control">
@@ -54,28 +76,19 @@
                       type="radio"
                       name="visibility"
                       checked
-                      v-model="visibility"
+                      v-model="visible"
+                      v-bind:value="true"
                     />
                     Public
                   </label>
                   <label class="radio">
-                    <input type="radio" name="visibility" v-model="visibility" />
+                    <input
+                      type="radio"
+                      name="visibility"
+                      v-model="visible"
+                      v-bind:value="false"
+                    />
                     Private
-                  </label>
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label">Profile Picture</label>
-                <div class="file">
-                  <label class="file-label">
-                    <input class="file-input" type="file" name="resume" />
-                    <span class="file-cta">
-                      <span class="file-icon">
-                        <i class="fas fa-upload"></i>
-                      </span>
-                      <span class="file-label"> Choose a file… </span>
-                    </span>
                   </label>
                 </div>
               </div>
@@ -93,29 +106,30 @@
 
 <script>
 import Session from "../services/session";
-import { Add } from "../services/users"
+import { Add } from "../services/users";
 
 export default {
   data: () => ({
     handle: null,
     password: null,
-    visibility: null,
-    picture: null,
+    firstName: null,
+    lastName: null,
+    visible: null,
     Session,
   }),
   methods: {
-    signup() {
-      Add({
+    async signup() {
+      await Add({
         handle: this.handle,
         password: this.password,
-        visibility: this.visibility,
-        pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
-      });
+        firstName: this.firstName,
+        lastName: this.lastName,
+        visible: this.visible,
+      })
+            
       this.Session.Login(this.handle, this.password);
-      if (this.Session.user && this.Session.toRoute) {
-        this.$router.push(this.Session.toRoute);
-      } else if (this.Session.user) {
-        this.$router.push('/journal');
+      if (this.Session.user) {
+        this.$router.push("/journal");
       }
     },
   },
