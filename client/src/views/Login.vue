@@ -16,7 +16,7 @@
                     v-model="handle"
                   />
                   <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-user"></i>
                   </span>
                 </div>
               </div>

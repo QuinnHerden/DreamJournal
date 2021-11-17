@@ -53,7 +53,6 @@
             <textarea
               class="textarea"
               placeholder="Enter your account description here!"
-              required
               v-model="description"
             ></textarea>
           </div>
