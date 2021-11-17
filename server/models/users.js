@@ -81,9 +81,14 @@ module.exports.Add = async function Add(user) {
     })
 
     user.password = hash
-    user.friendRequests=[]
-    user.friendList=[]
+    if (!user.friendRequests) {
+        user.friendRequests=[]
+    }
+    if (!user.friendList) {
+        user.friendList=[]
+    }
     user.dateCreated = Date()
+
 
     const user2 = await collection.insertOne(user)
     user._id = user2.insertedId
