@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="section" :class="{ 'is-hidden': !visible}">
     <div class="container">
       <div class="card">
         <div class="card-content">
@@ -125,6 +125,13 @@ export default {
     } else {
       this.actionString = "Like";
       this.actionEmit = "like";
+    }
+    if (!this.post.visible && (this.post.userHandle != this.user.handle)) {
+    // if (this.post.visible) {
+      console.log(this.post.visible)
+      this.visible = false;
+    } else {
+      this.visible = true;
     }
   },
   methods: {

@@ -105,9 +105,6 @@ module.exports.Add = async function Add(post) {
     if (!post.tags) {
         post.tags = []
     }
-    if (!post.visible) {
-        post.visible = true
-    }
     
     post.comments = []
 
