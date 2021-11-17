@@ -34,7 +34,7 @@
         </div>
         <footer class="card-footer">
           <router-link class="card-footer-item" to="">Share</router-link>
-          <router-link class="card-footer-item" to="">{{ actionString }}</router-link>
+          <router-link class="card-footer-item" to="" @click="$emit(actionEmit)">{{ actionString }}</router-link>
           <!-- <router-link class="card-footer-item" to="">Delete</router-link> -->
         </footer>
       </div>
@@ -110,9 +110,11 @@ export default {
     this.userAvatar = GetByHandle(this.post.userHandle).avatar;
     this.avatar = this.user.avatar;
     if (this.post.userHandle == this.user.handle) {
-      this.actionString = "Edit"
+      this.actionString = "Delete"
+      this.actionEmit = "remove"
     } else {
       this.actionString = "Like"
+      this.actionEmit = "like"
     }
   },
   methods: {
