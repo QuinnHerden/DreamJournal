@@ -62,12 +62,8 @@ export default {
   }),
   methods: {
     async login() {
+      this.Session.toRoute = "/journal";
       this.Session.Login(this.handle, this.password);
-      if (this.Session.user && this.Session.toRoute) {
-        this.$router.push(this.Session.toRoute);
-      } else if (this.Session.user) {
-        this.$router.push('/journal');
-      }
     },
   },
 };

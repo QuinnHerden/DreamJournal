@@ -41,7 +41,6 @@
                     <input
                       type="radio"
                       name="visibility"
-                      checked
                       v-model="visible"
                       v-bind:value="true"
                     />
@@ -69,6 +68,7 @@
 import FormBadge from "../components/FormBadge.vue";
 import Session from "../services/session";
 import { Update } from "../services/users";
+import router from "../router";
 
 export default {
   components: { FormBadge },
@@ -102,10 +102,9 @@ export default {
       if (this.description) {
         edit.description = this.description;
       }
+      await Update(id, edit);
+      router.push("/profile")
 
-      this.Session.toRoute = "/profile"
-      const response = await Update(id, edit);
-      this.Session.Login(response.handle, response.password)
     },
   },
 };
