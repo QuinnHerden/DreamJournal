@@ -49,4 +49,9 @@ app
             .then(x => res.status(201).send("Created"))
             .catch(next)
     })
+    .post("/comment/:id", (req, res, next) => {
+        model.Comment(req.params.id, req.body)
+            .then(x => {res.send(x)})
+            .catch(next)
+    })
 module.exports = app

@@ -141,3 +141,17 @@ module.exports.Seed = async () => {
         await this.Add(x)
     }
 }
+
+module.exports.Comment = async (post_id, comment) => {
+    let post = await this.Get(post_id)
+
+    post.comments.push(comment)
+
+    const results = await collection.findOneAndUpdate(
+        { _id: new ObjectId(post_id) },
+        { $set: post },
+        { returnDocument: 'after' }
+    )
+
+    return results.value
+}

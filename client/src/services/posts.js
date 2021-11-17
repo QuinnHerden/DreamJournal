@@ -17,15 +17,16 @@ export function GetFeed(handle) {
 
 export function Get(post_id) { return api('posts/' + post_id) }
 export function Add(post) {
-    // return { ...post }
-    console.log("here")
-    console.log(post)
-    console.log("here")
+
     return api('posts', post, 'POST')
 }
-export function Update(post_id, post) {
-    return { post_id, post }
-}
+// export function Update(post_id, post) {
+//     return { post_id, post }
+// }
 export function Delete(post_id) {
     return api('posts/' + post_id, {}, 'DELETE')
+}
+
+export function addComment(post_id, comment) {
+    return api('posts/comment/' + post_id, comment, 'POST')
 }
