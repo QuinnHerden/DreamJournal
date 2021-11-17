@@ -138,3 +138,7 @@ module.exports.Seed = async () => {
         await module.exports.Add(x)
     }
 }
+
+// module.exports.acceptFriend = async (userHandle) => {
+//     {name: '@Quinn', date: Date()}
+// }
