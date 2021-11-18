@@ -54,4 +54,13 @@ app
             .then(x => {res.send(x)})
             .catch(next)
     })
+    .post("/like", (req, res, next) => {
+        console.log(req.body)
+        model.Like(req.body.postId, req.body.userId)
+        .then(x => res.send(x))
+        .catch(next)
+    })
+
+
+    
 module.exports = app

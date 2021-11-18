@@ -22,7 +22,6 @@ const list = [
         description: "All at once, the room fell sillent...",
         tags: ['exciting', 'fun'],
         visible: true,
-        comments: []
     },
     {
         userHandle: "@Jose",
@@ -31,7 +30,6 @@ const list = [
         description: "This is not meant to mean a darn thing. Just a bunch of jibberish.",
         tags: ['thrilling', 'boring', 'confusing'],
         visible: true,
-        comments: []
     },
     {
         userHandle: "@Quinn",
@@ -40,7 +38,6 @@ const list = [
         description: "All of a sudden, my teeth fell out. Horrifying!",
         tags: [],
         visible: false,
-        comments: []
     },
 ]
 
@@ -107,6 +104,7 @@ module.exports.Add = async function Add(post) {
     }
     
     post.comments = []
+    post.likes = []
 
     post.datePosted = Date()
 
@@ -151,4 +149,26 @@ module.exports.Comment = async (post_id, comment) => {
     )
 
     return results.value
+}
+
+module.exports.Like = async (post_id, user_id) => {
+    let user = await Users.Get(user_id)
+    let post = await this.Get(post_id)
+    let likes = post.likes
+    
+    // console.log(likes)
+
+    let obj = likes.find(x => x.name === user.handle)
+    if (obj) {
+        let index = likes.indexOf(obj);
+        likes.splice(index, 1)
+        await this.Update(post_id, {likes: likes})
+    } else {
+        likes.push({name: user.handle})
+        await this.Update(post_id, {likes: likes})
+    }
+    
+    // console.log(likes)
+    return
+
 }

@@ -28,5 +28,13 @@ export function Delete(post_id) {
 }
 
 export function addComment(post_id, comment) {
+    // console.log(comment)
     return api('posts/comment/' + post_id, comment, 'POST')
+}
+
+export function Like(info) {
+    console.log(info)
+    console.log("this won't parse, no matter what I try. It doesn't clear the fetch data translation to body.")
+    // this won't parse...
+    // return api('posts/like', info, 'POST')
 }
