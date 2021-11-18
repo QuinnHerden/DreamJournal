@@ -21,8 +21,7 @@
             <div class="control has-icons-left has-icons-right">
               <input
                 class="input"
-                type="text"
-                placeholder="09/30/2021"
+                type="date"
                 required
                 v-model="date"
               />
