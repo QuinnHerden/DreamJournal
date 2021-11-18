@@ -113,12 +113,19 @@ export default {
     user: Session.user,
     actionString: null,
     text: null,
+    visible: null,
+    userAvatar: null,
+    avatar: null,
+
   }),
-  created() {
+  async mounted() {
     this.commentsArr = this.post.comments;
     this.count = this.commentsArr.length;
-    this.userAvatar = GetByHandle(this.post.userHandle).avatar;
+
+    this.postUser = await GetByHandle(this.post.userHandle)
     this.avatar = this.user.avatar;
+    this.userAvatar = this.postUser.avatar
+
     if (this.post.userHandle == this.user.handle) {
       this.actionString = "Delete";
       this.actionEmit = "remove";

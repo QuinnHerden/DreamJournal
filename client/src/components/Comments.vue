@@ -2,13 +2,13 @@
   <article class="media">
     <figure class="media-left">
       <p class="image is-64x64">
-        <img :src="author.avatar" alt="Avatar" />
+        <img :src="avatar" alt="Avatar" />
       </p>
     </figure>
     <div class="media-content">
       <div class="content">
         <p>
-          <router-link :to="'/profile/'">{{ author.userHandle }}</router-link>
+          <router-link to="">{{ handle }}</router-link>
           <br />{{ comment.text }}<br />
         </p>
       </div>
@@ -23,9 +23,11 @@ export default {
   props: {
     comment: Object,
   },
-  data: () => ({}),
-  created() {
-    this.author = GetByHandle(this.comment.userHandle);
+  data: () => ({author: null, avatar: null, handle: null,}),
+  async mounted() {
+    this.author = await GetByHandle(this.comment.userHandle);
+    this.avatar = this.author.avatar
+    this.handle = this.author.handle
   },
 };
 </script>
