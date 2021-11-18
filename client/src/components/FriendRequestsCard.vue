@@ -4,7 +4,7 @@
       <figure class="image is-48x48 is-inline-block">
         <img
           class="is-rounded"
-          :src="userAvatar"
+          :src="avatar"
           alt="Avatar"
         />
       </figure>
@@ -36,10 +36,11 @@ export default {
   props: {
     card: Object,
   },
-  data: () => ({}),
-  created() {
-        this.userAvatar = GetByHandle(this.card.name).avatar;
-
+  data: () => ({author: null, avatar: null, handle: null,}),
+  async mounted() {
+    this.author = await GetByHandle(this.card.name);
+    this.avatar = this.author.avatar
+    this.handle = this.author.handle
   },
 };
 </script>
