@@ -33,7 +33,7 @@
           </div>
         </div>
         <footer class="card-footer">
-          <router-link class="card-footer-item" to="">Share</router-link>
+          <!-- <router-link class="card-footer-item" to="">Share</router-link> -->
           <router-link
             class="card-footer-item"
             to=""
