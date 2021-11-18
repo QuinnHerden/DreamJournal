@@ -62,5 +62,33 @@ app
             })
             .catch(next)
     })
+    .post("/request/send", (req, res, next) => {
+
+        model.RequestSend(req.body.alphaUserHandle, req.body.betaUserHandle)
+            .then(user => {
+                res.send(user)
+            })
+            .catch(next)
+
+    })
+    .post("/request/accept", (req, res, next) => {
+
+        model.RequestAccept(req.body.alphaUserHandle, req.body.betaUserHandle)
+            .then(user => {
+                res.send(user)
+            })
+            .catch(next)
+
+    })
+    .post("/request/reject", (req, res, next) => {
+
+        model.RequestReject(req.body.alphaUserHandle, req.body.betaUserHandle)
+            .then(user => {
+                res.send(user)
+            })
+            .catch(next)
+
+    })
+
 
 module.exports = app

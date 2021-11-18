@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt')
 const { ObjectId } = require('bson')
+const { replace } = require('lodash')
 const { client } = require('./mongo')
 
 const collection = client.db(process.env.MONGO_DB).collection('users')
@@ -15,8 +16,8 @@ const list = [
         dateCreated: Date(),
         avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
         description: 'Hello! Welcome to my profile.',
-        friendRequests: [{name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Jose', date: Date()}],
-        friendList: [{name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Quinn', date: Date()}, {name: '@Jose', date: Date()}, {name: '@Jose', date: Date()}],
+        friendRequests: [{ name: '@Quinn', date: Date() }, { name: '@Jose', date: Date() }],
+        friendList: [],
     },
     {
         handle: '@Quinn',
@@ -28,7 +29,7 @@ const list = [
         avatar: 'https://i1.sndcdn.com/avatars-000626412048-iqg5dk-t500x500.jpg',
         description: 'I am the creator of this website.',
         friendRequests: [],
-        friendList: [{name: '@Jose', date: Date()}],
+        friendList: [{ name: '@Jose', date: Date() }],
     },
     {
         handle: '@Jose',
@@ -50,7 +51,7 @@ module.exports.Get = user_id => collection.findOne({ _id: new ObjectId(user_id) 
 module.exports.GetByHandle = (handle) => collection.findOne({ handle }).then(x => ({ ...x, password: undefined }))
 
 module.exports.Add = async function Add(user) {
-    
+
     if (!user.handle) {
         return Promise.reject({ code: 422, msg: "Handle is required" })
     }
@@ -58,7 +59,7 @@ module.exports.Add = async function Add(user) {
     if (check.handle == user.handle) {
         return Promise.reject({ code: 422, msg: "Handle already exists" })
     }
-    
+
     if (!user.firstName) {
         return Promise.reject({ code: 422, msg: "First Name is required" })
     } else if (!user.lastName) {
@@ -82,10 +83,10 @@ module.exports.Add = async function Add(user) {
 
     user.password = hash
     if (!user.friendRequests) {
-        user.friendRequests=[]
+        user.friendRequests = []
     }
     if (!user.friendList) {
-        user.friendList=[]
+        user.friendList = []
     }
     user.dateCreated = Date()
 
@@ -139,6 +140,67 @@ module.exports.Seed = async () => {
     }
 }
 
-// module.exports.acceptFriend = async (userHandle) => {
-//     {name: '@Quinn', date: Date()}
-// }
+module.exports.RequestSend = async (alphaUserHandle, betaUserHandle) => {
+    const alphaUser = await this.GetByHandle(alphaUserHandle)
+    const betaUser = await this.GetByHandle(betaUserHandle)
+
+    // add request
+    let array = alphaUser.friendRequests
+    array.push ( {name: betaUserHandle, date: Date() } )
+    console.log(array)
+    let repAlpha = { friendRequests: array }
+
+    let response1 = await this.Update(alphaUser._id, repAlpha)
+
+    return { response1, betaUser }
+}
+
+module.exports.RequestAccept = async (alphaUserHandle, betaUserHandle) => {
+    const alphaUser = await this.GetByHandle(alphaUserHandle)
+    const betaUser = await this.GetByHandle(betaUserHandle)
+
+    // remove request
+    let array = alphaUser.friendRequests
+    let obj = array.find(x => x.name === betaUserHandle);
+    let index = array.indexOf(obj);
+    array.splice(index, 1)
+    console.log(array)
+    let repAlpha = { friendRequests: array }
+
+    // add user to alpha friend list
+    array = alphaUser.friendList
+    let friend = { name: betaUserHandle, date: Date() }
+    array.push(friend)
+    repAlpha.friendList = array
+
+    // add user to beta friend list
+    array = betaUser.friendList
+    friend = { name: alphaUserHandle, date: Date() }
+    array.push(friend)
+    let repBeta = { friendList: array }
+
+    // update users
+    let response1 = await this.Update(alphaUser._id, repAlpha)
+    let response2 = await this.Update(betaUser._id, repBeta)
+
+
+    return { response1, response2 }
+}
+
+module.exports.RequestReject = async (alphaUserHandle, betaUserHandle) => {
+    const alphaUser = await this.GetByHandle(alphaUserHandle)
+    const betaUser = await this.GetByHandle(betaUserHandle)
+
+    // remove request
+    let array = alphaUser.friendRequests
+    let obj = array.find(x => x.name === betaUserHandle);
+    let index = array.indexOf(obj);
+    array.splice(index, 1)
+    console.log(array)
+    let repAlpha = { friendRequests: array }
+
+    // update users
+    let response1 = await this.Update(alphaUser._id, repAlpha)
+
+    return { response1, betaUser }
+}

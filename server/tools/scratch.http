@@ -52,6 +52,33 @@ DELETE  http://localhost:3000/users/61952e4ca2d79bdfc883368c
 ###
 POST http://localhost:3000/users/seed
 
+###
+POST http://localhost:3000/users/request/send
+Content-Type: application/json
+
+{
+    "alphaUserHandle": "@JewPaltz",
+    "betaUserHandle": "@Quinn"
+}
+
+###
+POST http://localhost:3000/users/request/accept
+Content-Type: application/json
+
+{
+    "alphaUserHandle": "@JewPaltz",
+    "betaUserHandle": "@Jose"
+}
+
+###
+POST http://localhost:3000/users/request/reject
+Content-Type: application/json
+
+{
+    "alphaUserHandle": "@JewPaltz",
+    "betaUserHandle": "@Quinn"
+}
+
 
 ####################################################
 http://localhost:3000/posts
