@@ -19,8 +19,8 @@
           <div class="media-content"></div>
         </div>
         <div class="content is-flex is-flex-wrap-wrap	">
-          <div class="card is-flex flex-wrap" v-for="c in requests" :key="c.i">
-            <friend-requests-card :card="c" />
+          <div class="card is-flex flex-wrap" v-for="(c, i) in requests" :key="c.i">
+            <friend-requests-card :card="c" @reject="reject(c, i)" @accept="accept(c, i)"/>
           </div>
         </div>
       </div>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { RequestAccept, RequestReject } from "../services/users";
 import Session from "../services/session";
 import FriendRequestsCard from "./FriendRequestsCard.vue";
 
@@ -52,6 +53,17 @@ export default {
     toggle() {
       this.hidden = !this.hidden;
     },
+    async accept(c, i) {
+      const response = await RequestAccept(this.Session.user.handle, c.name)
+      console.log(response)
+      this.requests.splice(i, 1)
+      this.count -=1
+    },
+    async reject(c, i) {
+      const response = await RequestReject(this.Session.user.handle, c.name)
+      console.log(response)
+      this.requests.splice(i, 1)
+    }
   },
 };
 </script>

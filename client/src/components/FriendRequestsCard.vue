@@ -12,14 +12,14 @@
     <router-link to="" class="tile is-child">{{ card.name }}</router-link>
     <div class="tile is-parent">
       <div class="tile is-child">
-        <button class="button is-outlined">
+        <button @click="$emit('accept')" class="button is-outlined">
           <span class="icon is-small">
             <i class="fas fa-check"></i>
           </span>
         </button>
       </div>
       <div class="tile is-child">
-        <button class="button is-outlined">
+        <button @click="$emit('reject')" class="button is-outlined">
           <span class="icon is-small">
             <i class="fas fa-times"></i>
           </span>
