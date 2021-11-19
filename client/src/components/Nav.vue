@@ -22,28 +22,28 @@
     <div class="navbar-menu" :class="{ 'is-active': isActive }">
       <div class="navbar-start">
         <div class="navbar-item has-dropdown is-hoverable">
-          <router-link class="navbar-link" to="/journal">
+          <router-link class="navbar-link" to="/journal/global">
             Journals
           </router-link>
 
           <div class="navbar-dropdown">
             <router-link
               class="navbar-item"
-              to="/journal"
+              to="/journal/global"
               @click="journal('global')"
             >
               Global
             </router-link>
             <router-link
               class="navbar-item"
-              to="/journal"
+              to="/journal/friend"
               @click="journal('friend')"
             >
               Friends
             </router-link>
             <router-link
               class="navbar-item"
-              to="/journal"
+              to="/journal/personal"
               @click="journal('personal')"
             >
               Personal

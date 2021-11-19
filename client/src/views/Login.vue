@@ -62,7 +62,7 @@ export default {
   }),
   methods: {
     async login() {
-      this.Session.toRoute = "/journal";
+      // this.Session.toRoute = "/journal";
       this.Session.Login(this.handle, this.password);
     },
   },

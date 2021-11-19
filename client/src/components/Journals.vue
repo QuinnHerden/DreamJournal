@@ -8,7 +8,7 @@
 
 <script>
 import Session from "../services/session";
-import EntryCard from "../components/EntryCard.vue";
+import EntryCard from "./EntryCard.vue";
 import { Delete, GetAll, Like, GetWall } from "../services/posts";
 export default {
   components: {
@@ -21,11 +21,16 @@ export default {
   }),
   async mounted() {
     this.user = this.Session.user;
+
     if (this.Session.journal == "personal") {
-      this.posts = await GetWall(this.Session.user.handle)
+      this.posts = await GetWall(this.Session.user.handle);
+    // } else if (this.Session.journal == "friend") {
+    // } else if (this.Session.journal == "user") {
+    // } else if (this.Session.journal == "tag") {
     } else {
       this.posts = await GetAll();
     }
+    this.posts.reverse();
   },
   methods: {
     async remove(post, i) {
@@ -39,10 +44,10 @@ export default {
       // console.log(this.user._id)
       const info = {
         postId: post._id.toString(),
-        userId: this.user._id.toString()
+        userId: this.user._id.toString(),
       };
       const response = await Like(info);
-      console.log(response)
+      console.log(response);
     },
   },
 };

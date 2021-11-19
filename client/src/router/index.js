@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Session from '../services/session'
 import Home from '../views/Home.vue'
-import Journal from '../views/Journal.vue'
+import JournalGlobal from '../views/JournalGlobal.vue'
+import JournalPersonal from '../views/JournalPersonal.vue'
+import JournalFriend from '../views/JournalFriend.vue'
 import Entry from '../views/Entry.vue'
 import Profile from '../views/Profile.vue'
 import ProfileEdit from '../views/ProfileEdit.vue'
@@ -14,9 +16,21 @@ const routes = [
     component: Home
   },
   {
-    path: '/journal',
-    name: 'Journal',
-    component: Journal,
+    path: '/journal/global',
+    name: 'Global Journal',
+    component: JournalGlobal,
+    meta: { requiresLogin: true }
+  },
+  {
+    path: '/journal/personal',
+    name: 'Personal Journal',
+    component: JournalPersonal,
+    meta: { requiresLogin: true }
+  },
+  {
+    path: '/journal/friend',
+    name: 'Friend Journal',
+    component: JournalFriend,
     meta: { requiresLogin: true }
   },
   {

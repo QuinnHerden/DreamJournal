@@ -5,9 +5,9 @@ import { NotificationProgrammatic } from "@oruga-ui/oruga-next/dist/esm/notifica
 const session = {
     user: null,
     messages: [],
-    toRoute: '/journal',
+    toRoute: '/journal/global',
     profile: null,
-    journal: "personal",
+    journal: "global",
     
 
     async Login(handle, password){
