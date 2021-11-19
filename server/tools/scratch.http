@@ -1,3 +1,12 @@
+###
+POST http://localhost:3000/users/seed
+
+###
+POST http://localhost:3000/posts/seed
+
+
+######################################################
+
 
 ###
 http://localhost:3000/users

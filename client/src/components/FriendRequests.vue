@@ -32,6 +32,7 @@
 import { RequestAccept, RequestReject } from "../services/users";
 import Session from "../services/session";
 import FriendRequestsCard from "./FriendRequestsCard.vue";
+// import router from "../router";
 
 export default {
   components: {
@@ -54,8 +55,9 @@ export default {
       this.hidden = !this.hidden;
     },
     async accept(c, i) {
-      await RequestAccept(this.Session.user.handle, c.name)
+      const response = await RequestAccept(this.Session.user.handle, c.name)
       // console.log(response)
+      this.Session.user = response
       this.requests.splice(i, 1)
       this.count -=1
     },

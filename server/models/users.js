@@ -13,7 +13,6 @@ const list = [
         firstName: 'Moshe',
         lastName: 'Plotkin',
         visible: true,
-        dateCreated: Date(),
         avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
         description: 'Hello! Welcome to my profile.',
         friendRequests: [{ name: '@Quinn', date: Date() }, { name: '@Jose', date: Date() }],
@@ -25,7 +24,6 @@ const list = [
         firstName: 'Quinn',
         lastName: 'Herden',
         visible: true,
-        dateCreated: Date(),
         avatar: 'https://i1.sndcdn.com/avatars-000626412048-iqg5dk-t500x500.jpg',
         description: 'I am the creator of this website.',
         friendRequests: [],
@@ -181,10 +179,11 @@ module.exports.RequestAccept = async (alphaUserHandle, betaUserHandle) => {
 
     // update users
     let response1 = await this.Update(alphaUser._id, repAlpha)
-    let response2 = await this.Update(betaUser._id, repBeta)
+    // let response2 = await this.Update(betaUser._id, repBeta)
+    await this.Update(betaUser._id, repBeta)
 
 
-    return { response1, response2 }
+    return { response1 }
 }
 
 module.exports.RequestReject = async (alphaUserHandle, betaUserHandle) => {
