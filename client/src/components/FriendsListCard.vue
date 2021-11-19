@@ -9,23 +9,30 @@
         />
       </figure>
     </div>
-    <router-link to="" class="tile is-child">{{ card.name }}</router-link>
+    <router-link to="/journal/user" class="tile is-child" @click="goUser(card.name)">{{ card.name }}</router-link>
   </div>
 </template>
 
 <script>
 import { GetByHandle } from "../services/users";
+import Session from "../services/session";
 
 export default {
   props: {
     card: Object,
   },
-  data: () => ({author: null, avatar: null, handle: null,}),
+  data: () => ({author: null, avatar: null, handle: null, Session}),
   async mounted() {
     this.author = await GetByHandle(this.card.name);
     this.avatar = this.author.avatar
     this.handle = this.author.handle
   },
+  methods: {
+    goUser(userHandle) {
+      this.Session.foreign = userHandle
+      this.Session.journal = 'user'
+    }
+  }
 };
 </script>
 

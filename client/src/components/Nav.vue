@@ -34,13 +34,13 @@
             >
               Global
             </router-link>
-            <router-link
+            <!-- <router-link
               class="navbar-item"
               to="/journal/friend"
               @click="journal('friend')"
-            >
-              Friends
-            </router-link>
+            > -->
+              <!-- Friends -->
+            <!-- </router-link> -->
             <router-link
               class="navbar-item"
               to="/journal/personal"

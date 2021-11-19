@@ -129,7 +129,7 @@ export default {
             
       this.Session.Login(this.handle, this.password);
       if (this.Session.user) {
-        this.$router.push("/journal");
+        this.$router.push("/journal/global");
       }
     },
   },

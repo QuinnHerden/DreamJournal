@@ -140,3 +140,9 @@ Content-Type: application/json
     "postId": "61969db8e1bebabc746ebd41",
     "userId": "619670d10a72a91cc2b21eb4"
 }
+
+###
+GET http://localhost:3000/posts/journal/tags/lucid
+
+###
+GET http://localhost:3000/posts/journal/user/@Jose

@@ -60,9 +60,12 @@ module.exports.GetAll = function GetAll() {
 }
 
 module.exports.GetWall = function GetWall(handle) {
-    // return collection.aggregate(addOwnerPipeline).match({ userHandle: handle }).toArray()
     return collection.find({ userHandle: handle }).toArray()
-    // return collection.find().match({ userHandle: handle }).toArray()
+}
+
+module.exports.GetTags = async function GetTags(tag) {
+    console.log(tag)
+    return await collection.find( { tags: tag } ).toArray()
 }
 
 // TODO: convert to MongoDB

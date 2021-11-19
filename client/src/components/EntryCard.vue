@@ -26,7 +26,7 @@
 
             <p></p>
             <div>
-              <router-link to="" v-for="tag in post.tags" :key="tag">
+              <router-link to="/journal/tag" v-for="tag in post.tags" :key="tag" @click="setTag(tag)">
                 #{{ tag }}
               </router-link>
             </div>
@@ -107,6 +107,7 @@ export default {
     post: Object,
   },
   data: () => ({
+    Session,
     hidden: true,
     commentsArr: [],
     count: null,
@@ -151,6 +152,11 @@ export default {
     toggle() {
       this.hidden = !this.hidden;
     },
+    setTag(name) {
+      // console.log(name)
+      this.Session.journal = 'tag'
+      this.Session.tag = name
+    }
   },
 };
 </script>

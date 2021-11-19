@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Session from '../services/session'
 import Home from '../views/Home.vue'
 import JournalGlobal from '../views/JournalGlobal.vue'
-import JournalPersonal from '../views/JournalPersonal.vue'
-import JournalFriend from '../views/JournalFriend.vue'
+import JournalPersonal from '../views/JournalUser.vue'
+import JournalUser from '../views/JournalUser.vue'
+import JournalTag from '../views/JournalTag.vue'
 import Entry from '../views/Entry.vue'
 import Profile from '../views/Profile.vue'
 import ProfileEdit from '../views/ProfileEdit.vue'
@@ -28,9 +29,15 @@ const routes = [
     meta: { requiresLogin: true }
   },
   {
-    path: '/journal/friend',
-    name: 'Friend Journal',
-    component: JournalFriend,
+    path: '/journal/user',
+    name: 'User Journal',
+    component: JournalUser,
+    meta: { requiresLogin: true }
+  },
+  {
+    path: '/journal/tag',
+    name: 'Tag Journal',
+    component: JournalTag,
     meta: { requiresLogin: true }
   },
   {

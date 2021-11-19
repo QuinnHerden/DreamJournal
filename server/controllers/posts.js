@@ -19,6 +19,11 @@ app
             .then(x => res.send(x))
             .catch(next)
     })
+    .get("/journal/tags/:title", (req, res, next) => {
+        model.GetTags(req.params.title)
+            .then(x => res.send(x))
+            .catch(next)
+    })
     .get("/search", (req, res, next) => {
         model.Search(req.query.q)
             .then(x => res.send(x))

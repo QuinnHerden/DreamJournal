@@ -115,17 +115,20 @@ export default {
   },
   methods: {
     async sub() {
+      if (! this.tags) {
+        this.tags.split(" ")
+      }
       const entry = {
         userHandle: this.user.handle,
         title: this.title,
         dateOccured: this.date,
         description: this.description,
-        tags: this.tags.split(" "),
-        visible: this.visible
+        visible: this.visible,
+        tags: this.tags
       };
       // console.log(entry)
       await Add(entry);
-      this.$router.push("/journal");
+      this.$router.push("/journal/global");
     },
   },
 };

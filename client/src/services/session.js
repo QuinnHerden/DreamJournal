@@ -8,6 +8,8 @@ const session = {
     toRoute: '/journal/global',
     profile: null,
     journal: "global",
+    tag: 'lucid',
+    foreign: null,
     
 
     async Login(handle, password){

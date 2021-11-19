@@ -9,7 +9,7 @@
 <script>
 import Session from "../services/session";
 import EntryCard from "./EntryCard.vue";
-import { Delete, GetAll, Like, GetWall } from "../services/posts";
+import { Delete, GetAll, Like, GetWall, GetTags } from "../services/posts";
 export default {
   components: {
     EntryCard,
@@ -24,9 +24,10 @@ export default {
 
     if (this.Session.journal == "personal") {
       this.posts = await GetWall(this.Session.user.handle);
-    // } else if (this.Session.journal == "friend") {
-    // } else if (this.Session.journal == "user") {
-    // } else if (this.Session.journal == "tag") {
+    } else if (this.Session.journal == "user") {
+      this.posts = await GetWall(this.Session.foreign)
+    } else if (this.Session.journal == "tag") {
+      this.posts = await GetTags(this.Session.tag)
     } else {
       this.posts = await GetAll();
     }
