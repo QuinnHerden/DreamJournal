@@ -28,7 +28,7 @@ export default {
       this.posts = await GetWall(this.Session.foreign)
     } else if (this.Session.journal == "tag") {
       this.posts = await GetTags(this.Session.tag)
-    } else {
+    } else if (this.Session.journal == "global") {
       this.posts = await GetAll();
     }
     this.posts.reverse();

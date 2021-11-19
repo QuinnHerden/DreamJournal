@@ -44,6 +44,7 @@
                   placeholder="#place #your #tags"
                   rows="1"
                   v-model="tags"
+                  required
                 ></textarea>
               </div>
             </div>
@@ -105,6 +106,7 @@ export default {
   },
   data() {
     return {
+      Session,
       FormBadge,
       user: Session.user,
       title: null,
@@ -115,19 +117,17 @@ export default {
   },
   methods: {
     async sub() {
-      if (! this.tags) {
-        this.tags.split(" ")
-      }
       const entry = {
         userHandle: this.user.handle,
         title: this.title,
         dateOccured: this.date,
         description: this.description,
-        visible: this.visible,
-        tags: this.tags
+        tags: this.tags.split(" "),
+        visible: this.visible
       };
       // console.log(entry)
       await Add(entry);
+      this.Session.journal = 'global'
       this.$router.push("/journal/global");
     },
   },
