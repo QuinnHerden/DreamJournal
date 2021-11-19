@@ -1,5 +1,5 @@
 <template>
-  <section class="section" :class="{ 'is-hidden': !visible}">
+  <section class="section" :class="{ 'is-hidden': !visible }">
     <div class="container">
       <div class="card">
         <div class="card-content">
@@ -12,7 +12,11 @@
             <div class="media-content">
               <p class="title is-4">{{ post.title }}</p>
               <p class="subtitle is-6">
-                <router-link to="">{{ post.userHandle }}</router-link>
+                <router-link
+                  to="/journal/user"
+                  @click="goUser(post.userHandle)"
+                  >{{ post.userHandle }}</router-link
+                >
               </p>
             </div>
           </div>
@@ -26,7 +30,12 @@
 
             <p></p>
             <div>
-              <router-link to="/journal/tag" v-for="tag in post.tags" :key="tag" @click="setTag(tag)">
+              <router-link
+                to="/journal/tag"
+                v-for="tag in post.tags"
+                :key="tag"
+                @click="setTag(tag)"
+              >
                 #{{ tag }}
               </router-link>
             </div>
@@ -117,15 +126,14 @@ export default {
     visible: null,
     userAvatar: null,
     avatar: null,
-
   }),
   async mounted() {
     this.commentsArr = this.post.comments;
     this.count = this.commentsArr.length;
 
-    this.postUser = await GetByHandle(this.post.userHandle)
+    this.postUser = await GetByHandle(this.post.userHandle);
     this.avatar = this.user.avatar;
-    this.userAvatar = this.postUser.avatar
+    this.userAvatar = this.postUser.avatar;
 
     if (this.post.userHandle == this.user.handle) {
       this.actionString = "Delete";
@@ -134,9 +142,9 @@ export default {
       this.actionString = "Like";
       this.actionEmit = "like";
     }
-    if (!this.post.visible && (this.post.userHandle != this.user.handle)) {
-    // if (this.post.visible) {
-      console.log(this.post.visible)
+    if (!this.post.visible && this.post.userHandle != this.user.handle) {
+      // if (this.post.visible) {
+      console.log(this.post.visible);
       this.visible = false;
     } else {
       this.visible = true;
@@ -154,9 +162,13 @@ export default {
     },
     setTag(name) {
       // console.log(name)
-      this.Session.journal = 'tag'
-      this.Session.tag = name
-    }
+      this.Session.journal = "tag";
+      this.Session.tag = name;
+    },
+    goUser(userHandle) {
+      this.Session.journal = "user";
+      this.Session.foreign = userHandle;
+    },
   },
 };
 </script>
