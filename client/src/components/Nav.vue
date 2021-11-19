@@ -22,7 +22,7 @@
     <div class="navbar-menu" :class="{ 'is-active': isActive }">
       <div class="navbar-start">
         <div class="navbar-item has-dropdown is-hoverable">
-          <router-link class="navbar-link" to="/journal/global">
+          <router-link class="navbar-link" to="/journal/global" @click="journal('global')">
             Journals
           </router-link>
 
