@@ -30,6 +30,8 @@ export default {
       this.posts = await GetTags(this.Session.tag)
     } else if (this.Session.journal == "global") {
       this.posts = await GetAll();
+    } else {
+      this.posts = await GetAll();
     }
     this.posts.reverse();
   },
