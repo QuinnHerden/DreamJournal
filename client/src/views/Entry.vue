@@ -62,7 +62,7 @@
             </div>
           </div>
 
-          <div class="field">
+          <!-- <div class="field">
             <div class="control">
               <label for="" class="label">Visibility</label>
               <label class="radio">
@@ -85,7 +85,7 @@
                 Private
               </label>
             </div>
-          </div>
+          </div> -->
 
           <form-badge></form-badge>
         </form>
@@ -101,9 +101,6 @@ import { Add } from "../services/posts";
 
 export default {
   components: { FormBadge },
-  created() {
-    this.visible = true
-  },
   data() {
     return {
       Session,
@@ -123,7 +120,6 @@ export default {
         dateOccured: this.date,
         description: this.description,
         tags: this.tags.split(" "),
-        visible: this.visible
       };
       // console.log(entry)
       await Add(entry);

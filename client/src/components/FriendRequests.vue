@@ -54,14 +54,14 @@ export default {
       this.hidden = !this.hidden;
     },
     async accept(c, i) {
-      const response = await RequestAccept(this.Session.user.handle, c.name)
-      console.log(response)
+      await RequestAccept(this.Session.user.handle, c.name)
+      // console.log(response)
       this.requests.splice(i, 1)
       this.count -=1
     },
     async reject(c, i) {
-      const response = await RequestReject(this.Session.user.handle, c.name)
-      console.log(response)
+      await RequestReject(this.Session.user.handle, c.name)
+      // console.log(response)
       this.requests.splice(i, 1)
     }
   },

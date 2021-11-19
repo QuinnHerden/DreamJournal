@@ -9,50 +9,32 @@ const list = [
     {
         userHandle: "@Quinn",
         title: "A Night of Terror",
-        dateOccured: "03-09-21",
+        dateOccured: "2021-09-03",
         description: "There I was... sat in the tower....",
         tags: ['spicy', 'scary', 'lucid'],
-        visible: true,
-        comments: [{userHandle: "@Quinn", text: "Good stuff! I love it."}, {userHandle: "@JewPaltz", text: "Thanks :)"}],
     },
     {
         userHandle: "@JewPaltz",
         title: "Teaching Class",
-        dateOccured: "02-11-20",
+        dateOccured: "2020-11-21",
         description: "All at once, the room fell sillent...",
         tags: ['exciting', 'fun'],
-        visible: true,
     },
     {
         userHandle: "@Jose",
         title: "Lorem Ipsum",
-        dateOccured: "01-01-84",
+        dateOccured: "1984-01-08",
         description: "This is not meant to mean a darn thing. Just a bunch of jibberish.",
         tags: ['thrilling', 'boring', 'confusing'],
-        visible: true,
     },
     {
         userHandle: "@Quinn",
         title: "A Trip to the Dentist",
-        dateOccured: "11-12-21",
+        dateOccured: "2021-12-21",
         description: "All of a sudden, my teeth fell out. Horrifying!",
-        tags: [],
-        visible: false,
+        tags: ['lucid'],
     },
 ]
-
-// const addOwnerPipeline = [
-//     {
-//         "$lookup": {
-//             from: "users",
-//             localField: 'userHandle',
-//             foreignField: 'handle',
-//             as: 'user',
-//         }
-//     },
-//     { $unwind: "$user" },
-//     { $project: { "owner.password": 0 } }
-// ]
 
 module.exports.GetAll = function GetAll() {
     // return collection.aggregate(addOwnerPipeline).toArray()
@@ -64,7 +46,7 @@ module.exports.GetWall = function GetWall(handle) {
 }
 
 module.exports.GetTags = async function GetTags(tag) {
-    console.log(tag)
+    // console.log(tag)
     return await collection.find( { tags: tag } ).toArray()
 }
 
@@ -92,7 +74,7 @@ module.exports.GetTags = async function GetTags(tag) {
 module.exports.Get = function Get(post_id) { return collection.findOne({ _id: new ObjectId(post_id) }) }
 
 module.exports.Add = async function Add(post) {
-    console.log(post)
+    // console.log(post)
     if (!post.userHandle) {
         throw { code: 422, msg: "Post must have an Owner" }
     } else if (!post.title) {

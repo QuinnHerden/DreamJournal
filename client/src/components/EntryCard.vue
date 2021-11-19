@@ -123,7 +123,7 @@ export default {
     user: Session.user,
     actionString: null,
     text: null,
-    visible: null,
+    visible: true,
     userAvatar: null,
     avatar: null,
   }),
@@ -142,13 +142,13 @@ export default {
       this.actionString = "Like";
       this.actionEmit = "like";
     }
-    if (!this.post.visible && this.post.userHandle != this.user.handle) {
-      // if (this.post.visible) {
-      console.log(this.post.visible);
-      this.visible = false;
-    } else {
-      this.visible = true;
-    }
+    // if (!this.post.visible && this.post.userHandle != this.user.handle) {
+    //   // if (this.post.visible) {
+    //   console.log(this.post.visible);
+    //   this.visible = false;
+    // } else {
+    //   this.visible = true;
+    // }
   },
   methods: {
     async addComment() {
