@@ -59,10 +59,11 @@ module.exports.GetAll = function GetAll() {
     return collection.find().toArray()
 }
 
-// module.exports.GetWall = function GetWall(handle) {
+module.exports.GetWall = function GetWall(handle) {
     // return collection.aggregate(addOwnerPipeline).match({ userHandle: handle }).toArray()
+    return collection.find({ userHandle: handle }).toArray()
     // return collection.find().match({ userHandle: handle }).toArray()
-// }
+}
 
 // TODO: convert to MongoDB
 // module.exports.GetFeed = function GetFeed(handle) {

@@ -9,7 +9,7 @@
 <script>
 import Session from "../services/session";
 import EntryCard from "../components/EntryCard.vue";
-import { Delete, GetAll, Like } from "../services/posts";
+import { Delete, GetAll, Like, GetWall } from "../services/posts";
 export default {
   components: {
     EntryCard,
@@ -20,8 +20,12 @@ export default {
     user: null,
   }),
   async mounted() {
-    this.posts = await GetAll();
     this.user = this.Session.user;
+    if (this.Session.journal == "personal") {
+      this.posts = await GetWall(this.Session.user.handle)
+    } else {
+      this.posts = await GetAll();
+    }
   },
   methods: {
     async remove(post, i) {

@@ -25,7 +25,30 @@
           <router-link class="navbar-link" to="/journal">
             Journals
           </router-link>
-          
+
+          <div class="navbar-dropdown">
+            <router-link
+              class="navbar-item"
+              to="/journal"
+              @click="journal('global')"
+            >
+              Global
+            </router-link>
+            <router-link
+              class="navbar-item"
+              to="/journal"
+              @click="journal('friend')"
+            >
+              Friends
+            </router-link>
+            <router-link
+              class="navbar-item"
+              to="/journal"
+              @click="journal('personal')"
+            >
+              Personal
+            </router-link>
+          </div>
         </div>
       </div>
 
@@ -41,6 +64,7 @@
 <script>
 import NavbarItemContents from "./NavbarItemContents.vue";
 import Session from "../services/session";
+// import Vue from "../../node_modules/@vue/";
 
 export default {
   components: {
@@ -52,7 +76,11 @@ export default {
       isActive: false,
     };
   },
-  methods: {},
+  methods: {
+    journal(type) {
+      this.Session.journal = type;
+    },
+  },
 };
 </script>
 
