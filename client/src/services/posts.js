@@ -10,9 +10,9 @@ export function GetWall(handle) {
     return api('posts/wall/' + handle)
 }
 
-export function GetFeed(handle) {
-    return api('posts/feed/' + handle)
-}
+// export function GetFeed(handle) {
+//     return api('posts/feed/' + handle)
+// }
 
 export function GetTags(tag) {
     return api('posts/journal/tags/' + tag)
