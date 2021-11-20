@@ -8,7 +8,7 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <router-link to="">{{ handle }}</router-link>
+          <router-link @click="setUser(handle)" to="/journal/user">{{ handle }}</router-link>
           <br />{{ comment.text }}<br />
         </p>
       </div>
@@ -18,16 +18,24 @@
 
 <script>
 import { GetByHandle } from "../services/users";
+import Session from "../services/session";
 
 export default {
   props: {
     comment: Object,
   },
-  data: () => ({author: null, avatar: null, handle: null,}),
+  data: () => ({ Session, author: null, avatar: null, handle: null }),
   async mounted() {
     this.author = await GetByHandle(this.comment.userHandle);
-    this.avatar = this.author.avatar
-    this.handle = this.author.handle
+    this.avatar = this.author.avatar;
+    this.handle = this.author.handle;
+  },
+  methods: {
+    setUser(handle) {
+      this.Session.journal = "user";
+      this.Session.foreign = handle;
+      this.$emit("refresh");
+    },
   },
 };
 </script>

@@ -43,12 +43,9 @@
         </div>
         <footer class="card-footer">
           <!-- <router-link class="card-footer-item" to="">Share</router-link> -->
-          <router-link
-            class="card-footer-item"
-            to=""
-            @click="action"
-            >{{ actionString }}</router-link
-          >
+          <router-link class="card-footer-item" to="" @click="action">{{
+            actionString
+          }}</router-link>
           <!-- <router-link class="card-footer-item" to="">Delete</router-link> -->
         </footer>
       </div>
@@ -57,7 +54,9 @@
     <div id="comments" class="container">
       <div class="card">
         <header class="card-header" @click="toggle">
-          <a class="card-header-title" :key="infoBar">({{ commentCount }}) Comments ~ ({{ likesCount }}) Likes</a>
+          <a class="card-header-title" :key="infoBar"
+            >({{ commentCount }}) Comments ~ ({{ likesCount }}) Likes</a
+          >
           <button class="card-header-icon is-active" aria-label="more options">
             <span class="icon">
               <i
@@ -171,7 +170,10 @@ export default {
       // console.log(name)
       this.Session.journal = "tag";
       this.Session.tag = name;
-      this.$emit('refresh')
+      this.$emit("refresh");
+    },
+    refresh() {
+      this.$emit("refresh");
     },
     goUser(userHandle) {
       this.Session.journal = "user";
@@ -179,9 +181,9 @@ export default {
     },
     action() {
       if (this.actionString == "Delete") {
-        this.$emit('remove')
+        this.$emit("remove");
       } else {
-        this.like()
+        this.like();
       }
     },
     async like() {
@@ -191,11 +193,11 @@ export default {
         userId: this.user._id.toString(),
       };
       const response = await Like(info);
-      this.likesArr = response.likes
-      this.likesArr.push("")
-      this.likesArr.pop("")
-      this.likesCount = this.likesArr.length
-      this.infoBar += 1
+      this.likesArr = response.likes;
+      this.likesArr.push("");
+      this.likesArr.pop("");
+      this.likesCount = this.likesArr.length;
+      this.infoBar += 1;
       // console.log(response);
     },
   },
