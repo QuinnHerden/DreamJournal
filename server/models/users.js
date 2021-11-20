@@ -15,7 +15,7 @@ const list = [
         visible: true,
         avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
         description: 'Hello! Welcome to my profile.',
-        friendRequests: [],
+        friendRequests: [{ name: '@Quinn', date: Date() }, { name: '@Jose', date: Date() }],
         friendList: [],
     },
     {
@@ -27,7 +27,7 @@ const list = [
         avatar: 'https://i1.sndcdn.com/avatars-000626412048-iqg5dk-t500x500.jpg',
         description: 'I am the creator of this website.',
         friendRequests: [],
-        friendList: [],
+        friendList: [{ name: '@Jose', date: Date() }],
     },
     {
         handle: '@Jose',
