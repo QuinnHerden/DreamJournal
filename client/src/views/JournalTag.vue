@@ -1,5 +1,13 @@
 <template>
-  <journals @refresh="refresh" :key="updateKey"></journals>
+  <section class="section">
+    <div class="container is-fccused">
+      <div class="card">
+        <div class="card-content">
+          <journals @refresh="refresh" :key="updateKey"></journals>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
