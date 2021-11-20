@@ -46,7 +46,7 @@
           <router-link
             class="card-footer-item"
             to=""
-            @click="$emit(actionEmit)"
+            @click="action"
             >{{ actionString }}</router-link
           >
           <!-- <router-link class="card-footer-item" to="">Delete</router-link> -->
@@ -57,7 +57,7 @@
     <div id="comments" class="container">
       <div class="card">
         <header class="card-header" @click="toggle">
-          <a class="card-header-title">({{ count }}) Comments</a>
+          <a class="card-header-title" :key="infoBar">({{ commentCount }}) Comments ~ ({{ likesCount }}) Likes</a>
           <button class="card-header-icon is-active" aria-label="more options">
             <span class="icon">
               <i
@@ -108,7 +108,7 @@
 import Comments from "./Comments.vue";
 import Session from "../services/session";
 import { GetByHandle } from "../services/users";
-import { addComment } from "../services/posts";
+import { addComment, Like } from "../services/posts";
 // import Comments from './Comments.vue';
 export default {
   components: { Comments },
@@ -119,17 +119,23 @@ export default {
     Session,
     hidden: true,
     commentsArr: [],
-    count: null,
+    commentCount: null,
     user: Session.user,
     actionString: null,
     text: null,
     visible: true,
     userAvatar: null,
     avatar: null,
+    likesArr: [],
+    likesCount: null,
+    infoBar: 0,
   }),
   async mounted() {
+    this.likesArr = this.post.likes;
+    this.likesCount = this.likesArr.length;
+
     this.commentsArr = this.post.comments;
-    this.count = this.commentsArr.length;
+    this.commentCount = this.commentsArr.length;
 
     this.postUser = await GetByHandle(this.post.userHandle);
     this.avatar = this.user.avatar;
@@ -137,7 +143,7 @@ export default {
 
     if (this.post.userHandle == this.user.handle) {
       this.actionString = "Delete";
-      this.actionEmit = "remove";
+      this.actionEmit = "";
     } else {
       this.actionString = "Like";
       this.actionEmit = "like";
@@ -155,7 +161,7 @@ export default {
       const comment = { userHandle: this.user.handle, text: this.text };
       await addComment(this.post._id, comment);
       this.commentsArr.push(comment);
-      this.count = this.commentsArr.length;
+      this.commentCount = this.commentsArr.length;
     },
     toggle() {
       this.hidden = !this.hidden;
@@ -168,6 +174,27 @@ export default {
     goUser(userHandle) {
       this.Session.journal = "user";
       this.Session.foreign = userHandle;
+    },
+    action() {
+      if (this.actionString == "Delete") {
+        this.$emit('remove')
+      } else {
+        this.like()
+      }
+    },
+    async like() {
+      // console.log(this.user._id)
+      const info = {
+        postId: this.post._id.toString(),
+        userId: this.user._id.toString(),
+      };
+      const response = await Like(info);
+      this.likesArr = response.likes
+      this.likesArr.push("")
+      this.likesArr.pop("")
+      this.likesCount = this.likesArr.length
+      this.infoBar += 1
+      console.log(response);
     },
   },
 };

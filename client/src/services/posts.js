@@ -36,8 +36,6 @@ export function addComment(post_id, comment) {
 }
 
 export function Like(info) {
-    console.log(info)
-    console.log("this won't parse, no matter what I try. It doesn't clear the fetch data translation to body.")
-    // this won't parse...
-    // return api('posts/like', info, 'POST')
+    // console.log(info)
+    return api('posts/like', info, 'POST')
 }

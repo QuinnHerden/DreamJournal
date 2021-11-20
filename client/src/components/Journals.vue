@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="post" v-for="(p, i) in posts" :key="p._id">
-      <entry-card :post="p" @remove="remove(p, i)" @Like="like(p)" />
+      <entry-card :post="p" @remove="remove(p, i)" />
     </div>
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 import Session from "../services/session";
 import EntryCard from "./EntryCard.vue";
-import { Delete, GetAll, Like, GetWall, GetTags } from "../services/posts";
+import { Delete, GetAll, GetWall, GetTags } from "../services/posts";
 export default {
   components: {
     EntryCard,
@@ -42,15 +42,6 @@ export default {
       if (response.deleted) {
         this.posts.splice(i, 1);
       }
-    },
-    async like(post) {
-      // console.log(this.user._id)
-      const info = {
-        postId: post._id.toString(),
-        userId: this.user._id.toString(),
-      };
-      const response = await Like(info);
-      console.log(response);
     },
   },
 };

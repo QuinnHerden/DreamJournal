@@ -143,18 +143,19 @@ module.exports.Like = async (post_id, user_id) => {
     let likes = post.likes
     
     // console.log(likes)
+    let response;
 
     let obj = likes.find(x => x.name === user.handle)
     if (obj) {
         let index = likes.indexOf(obj);
         likes.splice(index, 1)
-        await this.Update(post_id, {likes: likes})
+        response = await this.Update(post_id, {likes: likes})
     } else {
         likes.push({name: user.handle})
-        await this.Update(post_id, {likes: likes})
+        response = await this.Update(post_id, {likes: likes})
     }
     
     // console.log(likes)
-    return
+    return response
 
 }
