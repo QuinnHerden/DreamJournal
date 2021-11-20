@@ -30,13 +30,11 @@
             <router-link class="navbar-item" to="/journal/global">
               Global
             </router-link>
-            <!-- <router-link
+            <router-link
               class="navbar-item"
-              to="/journal/friend"
-              @click="journal('friend')"
-            > -->
-            <!-- Friends -->
-            <!-- </router-link> -->
+              to="/journal/user">
+            Users
+            </router-link>
             <router-link class="navbar-item" to="/journal/personal">
               Personal
             </router-link>

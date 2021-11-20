@@ -1,5 +1,18 @@
 <template>
   <section :key="updateKey" class="section">
+    <div class="container is-secondary">
+      <div class="card">
+        <div class="card-content is-flex">
+        <input
+          class="input is-rounded is-focused"
+          type="text"
+          placeholder="enter a user you'd like to find"
+        />
+        <button class="button is-primary is-rounded">Search</button>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
       <div class="card">
         <div class="card-content">
@@ -15,7 +28,10 @@
                 Joined <time datetime="2016-1-1">{{ user.dateCreated }}</time>
               </p>
               <p class="subtitle is-6">
-                <button @click="friend" class="button is-primary">
+              {{ user.description }}
+              </p>
+              <p class="subtitle is-6">
+                <button @click="friend" class="button is-light">
                   {{ friendStatus }}
                 </button>
               </p>
@@ -24,13 +40,16 @@
 
           <div class="content">
             <p>
-              {{ user.description }}
             </p>
           </div>
+    <journals @refresh="refresh"></journals>
         </div>
       </div>
     </div>
-    <journals @refresh="refresh"></journals>
+    <!-- <div class="section"> -->
+
+    <!-- </div> -->
+
   </section>
 </template>
 
@@ -48,13 +67,12 @@ export default {
     friendStatus: "Send Request",
   }),
   async mounted() {
-    this.user = await GetByHandle(this.Session.foreign);
-    this.Session.journal = "user";
     this.refresh();
   },
   methods: {
     async refresh() {
       this.user = await GetByHandle(this.Session.foreign);
+      this.Session.journal = "user";
       this.updateKey += 1;
     },
     async friend() {

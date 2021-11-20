@@ -15,23 +15,24 @@
                 Joined <time datetime="2016-1-1">{{ user.dateCreated }}</time>
               </p>
               <p class="subtitle is-6">
-                <router-link to="/editprofile">Edit Profile</router-link>
+                {{ user.description }}
+              </p>
+
+              <p class="subtitle is-6">
+                <router-link class="button is-light" to="/editprofile">Edit Profile</router-link>
               </p>
             </div>
           </div>
 
           <div class="content">
-            <p>
-              {{ user.description }}
-            </p>
           </div>
         </div>
       </div>
     </div>
 
-    <friend-requests :key="updateKey" @refresh="refresh"></friend-requests>
-
     <friends-list :key="updateKey"></friends-list>
+
+    <friend-requests :key="updateKey" @refresh="refresh"></friend-requests>
   </section>
 </template>
 
@@ -48,7 +49,7 @@ export default {
   methods: {
     refresh() {
       this.updateKey += 1;
-    }
+    },
   },
 };
 </script>

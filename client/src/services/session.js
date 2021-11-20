@@ -9,7 +9,7 @@ const session = {
     profile: null,
     journal: "global",
     tag: 'lucid',
-    foreign: null,
+    foreign: '@Quinn',
 
     async addFriend(alphaHandle, betaHandle) {
         const alphaUser = await GetByHandle(alphaHandle)
