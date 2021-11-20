@@ -69,7 +69,7 @@
         </header>
         <div class="card-content" :class="{ 'is-hidden': hidden }">
           <div class="comment" v-for="c in commentsArr" :key="c._id">
-            <comments @refresh="refresh" :comment="c" /> <br />
+            <comments @goUser="goCommentUser" :comment="c" /> <br />
           </div>
 
           <article class="media">
@@ -178,6 +178,10 @@ export default {
     goUser(userHandle) {
       this.Session.journal = "user";
       this.Session.foreign = userHandle;
+      this.$emit("refresh");
+    },
+    goCommentUser() {
+      this.Session.journal = "user";
       this.$emit("refresh");
     },
     action() {

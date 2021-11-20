@@ -36,7 +36,7 @@ export default {
     setUser(handle) {
       // this.Session.journal = "user";
       this.Session.foreign = handle;
-      this.$emit("refresh");
+      this.$emit("goUser");
     },
   },
 };

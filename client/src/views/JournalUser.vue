@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     async refresh() {
-      await GetByHandle(this.Session.foreign);
+      this.user = await GetByHandle(this.Session.foreign);
       this.updateKey += 1;
     },
     async friend() {
