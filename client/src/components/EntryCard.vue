@@ -87,6 +87,7 @@
                       class="textarea"
                       placeholder="Add a comment..."
                       v-model="text"
+                      required
                     ></textarea>
                   </p>
                 </div>
