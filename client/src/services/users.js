@@ -64,6 +64,10 @@ export function Login(hand, pass) {
     
 }
 
+export function RequestSend(alphaHandle, betaHandle) {
+    return api('users/request/send', {alphaUserHandle: alphaHandle, betaUserHandle: betaHandle}, 'POST')
+}
+
 export function RequestAccept(alphaUserHandle, betaUserHandle) {
     return api('users/request/accept', {alphaUserHandle: alphaUserHandle, betaUserHandle: betaUserHandle }, 'POST')
 }
