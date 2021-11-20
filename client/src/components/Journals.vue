@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="post" v-for="(p, i) in posts" :key="p._id">
-      <entry-card :post="p" @remove="remove(p, i)" />
+      <entry-card :post="p" @refresh="refresh()" @remove="remove(p, i)" />
     </div>
   </div>
 </template>
@@ -43,6 +43,9 @@ export default {
         this.posts.splice(i, 1);
       }
     },
+    refresh() {
+      this.$emit('refresh')
+    }
   },
 };
 </script>

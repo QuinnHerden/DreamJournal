@@ -170,6 +170,7 @@ export default {
       // console.log(name)
       this.Session.journal = "tag";
       this.Session.tag = name;
+      this.$emit('refresh')
     },
     goUser(userHandle) {
       this.Session.journal = "user";
