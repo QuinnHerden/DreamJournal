@@ -25,9 +25,9 @@ export default {
     if (this.Session.journal == "personal") {
       this.posts = await GetWall(this.Session.user.handle);
     } else if (this.Session.journal == "user") {
-      this.posts = await GetWall(this.Session.foreign)
+      this.posts = await GetWall(this.Session.foreign);
     } else if (this.Session.journal == "tag") {
-      this.posts = await GetTags(this.Session.tag)
+      this.posts = await GetTags(this.Session.tag);
     } else if (this.Session.journal == "global") {
       this.posts = await GetAll();
     } else {
@@ -44,8 +44,8 @@ export default {
       }
     },
     refresh() {
-      this.$emit('refresh')
-    }
+      this.$emit("refresh");
+    },
   },
 };
 </script>

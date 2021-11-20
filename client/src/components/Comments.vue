@@ -8,7 +8,9 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <router-link @click="setUser(handle)" to="/journal/user">{{ handle }}</router-link>
+          <router-link @click="setUser(handle)" to="/journal/user">{{
+            handle
+          }}</router-link>
           <br />{{ comment.text }}<br />
         </p>
       </div>
@@ -32,7 +34,7 @@ export default {
   },
   methods: {
     setUser(handle) {
-      this.Session.journal = "user";
+      // this.Session.journal = "user";
       this.Session.foreign = handle;
       this.$emit("refresh");
     },

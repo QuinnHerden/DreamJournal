@@ -22,16 +22,12 @@
     <div class="navbar-menu" :class="{ 'is-active': isActive }">
       <div class="navbar-start">
         <div class="navbar-item has-dropdown is-hoverable">
-          <router-link class="navbar-link" to="/journal/global" @click="journal('global')">
+          <router-link class="navbar-link" to="/journal/global">
             Journals
           </router-link>
 
           <div class="navbar-dropdown">
-            <router-link
-              class="navbar-item"
-              to="/journal/global"
-              @click="journal('global')"
-            >
+            <router-link class="navbar-item" to="/journal/global">
               Global
             </router-link>
             <!-- <router-link
@@ -39,13 +35,9 @@
               to="/journal/friend"
               @click="journal('friend')"
             > -->
-              <!-- Friends -->
+            <!-- Friends -->
             <!-- </router-link> -->
-            <router-link
-              class="navbar-item"
-              to="/journal/personal"
-              @click="journal('personal')"
-            >
+            <router-link class="navbar-item" to="/journal/personal">
               Personal
             </router-link>
           </div>
@@ -78,7 +70,8 @@ export default {
   },
   methods: {
     journal(type) {
-      this.Session.journal = type;
+      // this.Session.journal = type;
+      console.log(type);
     },
   },
 };

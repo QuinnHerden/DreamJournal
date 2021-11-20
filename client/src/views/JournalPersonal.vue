@@ -13,7 +13,7 @@ export default {
     updateKey: 0,
   }),
   mounted() {
-    this.Session.journal = "user";
+    this.Session.journal = "personal";
     this.refresh();
   },
   methods: {
