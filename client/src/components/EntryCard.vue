@@ -194,7 +194,7 @@ export default {
       this.likesArr.pop("")
       this.likesCount = this.likesArr.length
       this.infoBar += 1
-      console.log(response);
+      // console.log(response);
     },
   },
 };

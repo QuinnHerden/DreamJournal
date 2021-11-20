@@ -6,11 +6,7 @@
           <div class="media">
             <div class="media-left">
               <figure class="image is-128x128">
-                <img
-                  class="is-rounded"
-                  :src="user.avatar"
-                  alt="Avatar"
-                />
+                <img class="is-rounded" :src="user.avatar" alt="Avatar" />
               </figure>
             </div>
             <div class="media-content">
@@ -33,9 +29,9 @@
       </div>
     </div>
 
-    <friend-requests></friend-requests>
+    <friend-requests :key="updateKey" @refresh="refresh"></friend-requests>
 
-    <friends-list></friends-list>
+    <friends-list :key="updateKey"></friends-list>
   </section>
 </template>
 
@@ -45,9 +41,15 @@ import FriendRequests from "../components/FriendRequests.vue";
 import FriendsList from "../components/FriendsList.vue";
 export default {
   components: { FriendRequests, FriendsList },
-      data: ()=> ({
-        user: Session.user,
-    })
+  data: () => ({
+    user: Session.user,
+    updateKey: 0,
+  }),
+  methods: {
+    refresh() {
+      this.updateKey += 1;
+    }
+  },
 };
 </script>
 

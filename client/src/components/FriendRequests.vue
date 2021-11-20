@@ -19,8 +19,8 @@
           <div class="media-content"></div>
         </div>
         <div class="content is-flex is-flex-wrap-wrap	">
-          <div class="card is-flex flex-wrap" v-for="(c, i) in requests" :key="c.i">
-            <friend-requests-card :card="c" @reject="reject(c, i)" @accept="accept(c, i)"/>
+          <div class="card is-flex flex-wrap" v-for="c in requests" :key="c.i">
+            <friend-requests-card :card="c" @reject="reject(c)" @accept="accept(c)"/>
           </div>
         </div>
       </div>
@@ -32,6 +32,7 @@
 import { RequestAccept, RequestReject } from "../services/users";
 import Session from "../services/session";
 import FriendRequestsCard from "./FriendRequestsCard.vue";
+// import { response } from 'express';
 // import router from "../router";
 
 export default {
@@ -54,17 +55,17 @@ export default {
     toggle() {
       this.hidden = !this.hidden;
     },
-    async accept(c, i) {
-      const response = await RequestAccept(this.Session.user.handle, c.name)
-      // console.log(response)
-      this.Session.user = response
-      this.requests.splice(i, 1)
+    async accept(c) {
+      this.Session.user = await RequestAccept(this.Session.user.handle, c.name)
+      this.requests = this.Session.user.friendRequests
       this.count -=1
+      this.$emit('refresh')
     },
-    async reject(c, i) {
-      await RequestReject(this.Session.user.handle, c.name)
-      // console.log(response)
-      this.requests.splice(i, 1)
+    async reject(c) {
+      this.Session.user = await RequestReject(this.Session.user.handle, c.name)
+      this.requests = this.Session.user.friendRequests
+      this.count -=1
+      this.$emit('refresh')
     }
   },
 };

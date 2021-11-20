@@ -42,6 +42,7 @@ const list = [
     },
 ]
 
+
 module.exports.GetAll = function GetAll() { return collection.find().toArray() }
 
 module.exports.Get = user_id => collection.findOne({ _id: new ObjectId(user_id) })
@@ -183,12 +184,12 @@ module.exports.RequestAccept = async (alphaUserHandle, betaUserHandle) => {
     await this.Update(betaUser._id, repBeta)
 
 
-    return { response1 }
+    return response1
 }
 
 module.exports.RequestReject = async (alphaUserHandle, betaUserHandle) => {
     const alphaUser = await this.GetByHandle(alphaUserHandle)
-    const betaUser = await this.GetByHandle(betaUserHandle)
+    // const betaUser = await this.GetByHandle(betaUserHandle)
 
     // remove request
     let array = alphaUser.friendRequests
@@ -201,5 +202,5 @@ module.exports.RequestReject = async (alphaUserHandle, betaUserHandle) => {
     // update users
     let response1 = await this.Update(alphaUser._id, repAlpha)
 
-    return { response1, betaUser }
+    return response1
 }
