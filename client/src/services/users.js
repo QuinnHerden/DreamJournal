@@ -75,3 +75,7 @@ export function RequestAccept(alphaUserHandle, betaUserHandle) {
 export function RequestReject(alphaUserHandle, betaUserHandle) {
     return api('users/request/reject', {alphaUserHandle: alphaUserHandle, betaUserHandle: betaUserHandle }, 'POST')
 }
+
+export function Search(userHandle) {
+    return api('users/find/' + userHandle)
+}

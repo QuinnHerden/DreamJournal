@@ -3,12 +3,17 @@
     <div class="container is-secondary">
       <div class="card">
         <div class="card-content is-flex">
-        <input
-          class="input is-rounded is-focused"
-          type="text"
-          placeholder="enter a user you'd like to find"
-        />
-        <button class="button is-primary is-rounded">Search</button>
+          <!-- <form @submit.prevent="Search"> -->
+          <input
+            class="input is-rounded is-focused"
+            type="text"
+            placeholder="enter a user you'd like to find"
+            v-model="query"
+          />
+          <button @click="search" class="button is-primary is-rounded">
+            Search
+          </button>
+          <!-- </form> -->
         </div>
       </div>
     </div>
@@ -28,7 +33,7 @@
                 Joined <time datetime="2016-1-1">{{ user.dateCreated }}</time>
               </p>
               <p class="subtitle is-6">
-              {{ user.description }}
+                {{ user.description }}
               </p>
               <p class="subtitle is-6">
                 <button @click="friend" class="button is-light">
@@ -39,24 +44,22 @@
           </div>
 
           <div class="content">
-            <p>
-            </p>
+            <p></p>
           </div>
-    <journals @refresh="refresh"></journals>
+          <journals @refresh="refresh"></journals>
         </div>
       </div>
     </div>
     <!-- <div class="section"> -->
 
     <!-- </div> -->
-
   </section>
 </template>
 
 <script>
 import Journals from "../components/Journals.vue";
 import Session from "../services/session";
-import { GetByHandle } from "../services/users";
+import { GetByHandle, Search } from "../services/users";
 
 export default {
   components: { Journals },
@@ -65,6 +68,7 @@ export default {
     user: Session.user,
     updateKey: 0,
     friendStatus: "Send Request",
+    query: null,
   }),
   async mounted() {
     this.refresh();
@@ -77,6 +81,22 @@ export default {
     },
     async friend() {
       this.Session.addFriend(this.user.handle, this.Session.user.handle);
+    },
+    async search() {
+      try {
+        const response = await Search(this.query);
+        if (!response.handle) {
+          throw ("We can't find that user");
+        } else if (!response.visible) {
+          throw ("There are no visible users with that handle")
+        }
+          this.Session.foreign = response.handle;
+      } catch (error) {
+        Session.Error(error);
+      }
+
+
+      this.refresh();
     },
   },
 };

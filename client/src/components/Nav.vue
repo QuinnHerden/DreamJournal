@@ -30,13 +30,13 @@
             <router-link class="navbar-item" to="/journal/global">
               Global
             </router-link>
+            <router-link class="navbar-item" to="/journal/personal">
+              Personal
+            </router-link>
             <router-link
               class="navbar-item"
               to="/journal/user">
             Users
-            </router-link>
-            <router-link class="navbar-item" to="/journal/personal">
-              Personal
             </router-link>
           </div>
         </div>
