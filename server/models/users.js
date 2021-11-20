@@ -14,9 +14,6 @@ const list = [
         lastName: 'Plotkin',
         visible: true,
         avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
-        description: 'Hello! Welcome to my profile.',
-        friendRequests: [{ name: '@Quinn', date: Date() }, { name: '@Jose', date: Date() }],
-        friendList: [],
     },
     {
         handle: '@Quinn',
@@ -25,9 +22,6 @@ const list = [
         lastName: 'Herden',
         visible: true,
         avatar: 'https://i1.sndcdn.com/avatars-000626412048-iqg5dk-t500x500.jpg',
-        description: 'I am the creator of this website.',
-        friendRequests: [],
-        friendList: [{ name: '@Jose', date: Date() }],
     },
     {
         handle: '@Jose',
@@ -36,9 +30,6 @@ const list = [
         lastName: 'Cabborane',
         visible: true,
         avatar: 'https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F613b808be442fc75020110ff%2F0x0.jpg',
-        description: 'I am a fictional character.',
-        friendRequests: [],
-        friendList: [],
     },
 ]
 
