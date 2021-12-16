@@ -3,6 +3,26 @@
     <div class="container is-secondary">
       <div class="card">
         <div class="card-content is-flex">
+          
+          <section>
+            <p class="content"><b>Selected:</b> {{ selected }}</p>
+            <o-field label="Find a JS framework">
+              <o-autocomplete
+                rounded
+                expanded
+                v-model="name"
+                :data="filteredDataArray"
+                placeholder="e.g. jQuery"
+                icon="search"
+                clearable
+                @select="(option) => (selected = option)"
+              >
+                <template slot:empty>No results found</template>
+              </o-autocomplete>
+            </o-field>
+          </section>
+
+
           <!-- <form @submit.prevent="Search"> -->
           <input
             class="input is-rounded is-focused"
@@ -69,6 +89,22 @@ export default {
     updateKey: 0,
     friendStatus: "Send Request",
     query: null,
+    data: [
+      "Angular",
+      "Angular 2",
+      "Aurelia",
+      "Backbone",
+      "Ember",
+      "jQuery",
+      "Meteor",
+      "Node.js",
+      "Polymer",
+      "React",
+      "RxJS",
+      "Vue.js",
+    ],
+    name: "",
+    selected: null,
   }),
   async mounted() {
     this.refresh();
@@ -86,19 +122,30 @@ export default {
       try {
         const response = await Search(this.query);
         if (!response.handle) {
-          throw ("We can't find that user");
+          throw "We can't find that user";
         } else if (!response.visible) {
-          throw ("There are no visible users with that handle")
+          throw "There are no visible users with that handle";
         }
-          this.Session.foreign = response.handle;
+        this.Session.foreign = response.handle;
       } catch (error) {
         Session.Error(error);
       }
 
-
       this.refresh();
     },
   },
+  computed: {
+      filteredDataArray() {
+        return this.data.filter(option => {
+          return (
+            option
+              .toString()
+              .toLowerCase()
+              .indexOf(this.name.toLowerCase()) >= 0
+          )
+        })
+      }
+  }
 };
 </script>
 
