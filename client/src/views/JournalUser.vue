@@ -3,38 +3,38 @@
     <div class="container is-secondary">
       <div class="card">
         <!-- <div class="card-content is-flex"> -->
-          <section>
-            <p class="content"><b>Selected:</b> {{ selected }}</p>
-            <!-- <o-field label="Find a JS framework"> -->
-              <o-autocomplete
-                rounded
-                expanded
-                v-model="name"
-                :data="filteredDataArray"
-                placeholder="e.g. @Quinn"
-                icon="search"
-                clearable
-                @select="(option) => (selected = option)"
-              >
-                <template v-slot:empty>No results found</template>
-              </o-autocomplete>
-                <button @click="dataUp" class="button is-primary is-rounded">
-                  Search
-                </button>
-                <button @click="search" class="button is-primary is-rounded">
-                  Enter
-                </button>
-            <!-- </o-field> -->
-          </section>
+        <section>
+          <p class="content"><b>Selected:</b> {{ selected }}</p>
+          <!-- <o-field label="Find a JS framework"> -->
+          <o-autocomplete
+            rounded
+            expanded
+            v-model="name"
+            :data="filteredDataArray"
+            placeholder="e.g. @Quinn"
+            icon="search"
+            clearable
+            @select="(option) => (selected = option)"
+          >
+            <template v-slot:empty>No results found</template>
+          </o-autocomplete>
+          <button @click="dataUp" class="button is-primary is-rounded">
+            Search
+          </button>
+          <button @click="search" class="button is-primary is-rounded">
+            Enter
+          </button>
+          <!-- </o-field> -->
+        </section>
 
-          <!-- <form @submit.prevent="Search"> -->
-          <!-- <input
+        <!-- <form @submit.prevent="Search"> -->
+        <!-- <input
             class="input is-rounded is-focused"
             type="text"
             placeholder="enter a user you'd like to find"
             v-model="query"
           /> -->
-          <!-- </form> -->
+        <!-- </form> -->
         <!-- </div> -->
       </div>
     </div>
@@ -90,18 +90,24 @@ export default {
     updateKey: 0,
     friendStatus: "Send Request",
     query: null,
-    data: [''],
+    data: [""],
     name: "",
     selected: null,
     temp: [],
   }),
   async mounted() {
+    this.temp = await GetUsers("@");
+    this.data = this.temp.map(function (item) {
+      return item["handle"];
+    });
     this.refresh();
   },
   methods: {
     async dataUp() {
-      this.temp = await GetUsers(this.name)
-      this.data = this.temp.map(function(item) { return item["handle"]; })
+      this.temp = await GetUsers(this.name);
+      this.data = this.temp.map(function (item) {
+        return item["handle"];
+      });
     },
     async refresh() {
       // await this.dataUp()
