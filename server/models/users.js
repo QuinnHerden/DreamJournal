@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
 const { ObjectId } = require('bson')
-const { replace } = require('lodash')
+// const { replace, xor } = require('lodash')
 const { client } = require('./mongo')
 
 const collection = client.db(process.env.MONGO_DB).collection('users')
@@ -39,6 +39,10 @@ module.exports.GetAll = function GetAll() { return collection.find().toArray() }
 module.exports.Get = user_id => collection.findOne({ _id: new ObjectId(user_id) })
 
 module.exports.GetByHandle = (handle) => collection.findOne({ handle }).then(x => ({ ...x, password: undefined }))
+
+module.exports.GetByFinal = function GetByFinal(handle) { return  collection.find({"handle": {$regex:handle}}).toArray() }
+
+
 
 module.exports.Add = async function Add(user) {
 

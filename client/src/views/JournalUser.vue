@@ -2,39 +2,40 @@
   <section :key="updateKey" class="section">
     <div class="container is-secondary">
       <div class="card">
-        <div class="card-content is-flex">
-          
+        <!-- <div class="card-content is-flex"> -->
           <section>
             <p class="content"><b>Selected:</b> {{ selected }}</p>
-            <o-field label="Find a JS framework">
+            <!-- <o-field label="Find a JS framework"> -->
               <o-autocomplete
                 rounded
                 expanded
                 v-model="name"
                 :data="filteredDataArray"
-                placeholder="e.g. jQuery"
+                placeholder="e.g. @Quinn"
                 icon="search"
                 clearable
                 @select="(option) => (selected = option)"
               >
-                <template slot:empty>No results found</template>
+                <template v-slot:empty>No results found</template>
               </o-autocomplete>
-            </o-field>
+                <button @click="dataUp" class="button is-primary is-rounded">
+                  Search
+                </button>
+                <button @click="search" class="button is-primary is-rounded">
+                  Enter
+                </button>
+            <!-- </o-field> -->
           </section>
 
-
           <!-- <form @submit.prevent="Search"> -->
-          <input
+          <!-- <input
             class="input is-rounded is-focused"
             type="text"
             placeholder="enter a user you'd like to find"
             v-model="query"
-          />
-          <button @click="search" class="button is-primary is-rounded">
-            Search
-          </button>
+          /> -->
           <!-- </form> -->
-        </div>
+        <!-- </div> -->
       </div>
     </div>
 
@@ -79,7 +80,7 @@
 <script>
 import Journals from "../components/Journals.vue";
 import Session from "../services/session";
-import { GetByHandle, Search } from "../services/users";
+import { GetByHandle, Search, GetUsers } from "../services/users";
 
 export default {
   components: { Journals },
@@ -89,28 +90,22 @@ export default {
     updateKey: 0,
     friendStatus: "Send Request",
     query: null,
-    data: [
-      "Angular",
-      "Angular 2",
-      "Aurelia",
-      "Backbone",
-      "Ember",
-      "jQuery",
-      "Meteor",
-      "Node.js",
-      "Polymer",
-      "React",
-      "RxJS",
-      "Vue.js",
-    ],
+    data: [''],
     name: "",
     selected: null,
+    temp: [],
   }),
   async mounted() {
     this.refresh();
   },
   methods: {
+    async dataUp() {
+      this.temp = await GetUsers(this.name)
+      this.data = this.temp.map(function(item) { return item["handle"]; })
+    },
     async refresh() {
+      // await this.dataUp()
+      // console.log(this.data)
       this.user = await GetByHandle(this.Session.foreign);
       this.Session.journal = "user";
       this.updateKey += 1;
@@ -120,7 +115,7 @@ export default {
     },
     async search() {
       try {
-        const response = await Search(this.query);
+        const response = await Search(this.name);
         if (!response.handle) {
           throw "We can't find that user";
         } else if (!response.visible) {
@@ -135,17 +130,14 @@ export default {
     },
   },
   computed: {
-      filteredDataArray() {
-        return this.data.filter(option => {
-          return (
-            option
-              .toString()
-              .toLowerCase()
-              .indexOf(this.name.toLowerCase()) >= 0
-          )
-        })
-      }
-  }
+    filteredDataArray() {
+      return this.data.filter((option) => {
+        return (
+          option.toString().toLowerCase().indexOf(this.name.toLowerCase()) >= 0
+        );
+      });
+    },
+  },
 };
 </script>
 

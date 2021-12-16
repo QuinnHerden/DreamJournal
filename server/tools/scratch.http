@@ -12,6 +12,9 @@ POST http://localhost:3000/posts/seed
 http://localhost:3000/users
 
 ###
+http://localhost:3000/users/final/@Quinn
+
+###
 http://localhost:3000/users/find/@Quinn
 
 ###

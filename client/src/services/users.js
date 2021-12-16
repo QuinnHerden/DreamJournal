@@ -42,6 +42,8 @@ import { api } from "./myFetch";
 export function Get(user_id) { return api('users/' + user_id) }
 export function GetByHandle(handle) { return api('users/find/' + handle) }
 
+export function GetUsers(string) { return api('users/final/' + string) }
+
 export function Add(user) {
     // list.push(user);
     // return { ...user, password: undefined };
@@ -61,19 +63,19 @@ export function Update(user_id, user) {
 
 export function Login(hand, pass) {
     return api('users/login', { "handle": hand, "password": pass, }, 'POST')
-    
+
 }
 
 export function RequestSend(alphaHandle, betaHandle) {
-    return api('users/request/send', {alphaUserHandle: alphaHandle, betaUserHandle: betaHandle}, 'POST')
+    return api('users/request/send', { alphaUserHandle: alphaHandle, betaUserHandle: betaHandle }, 'POST')
 }
 
 export function RequestAccept(alphaUserHandle, betaUserHandle) {
-    return api('users/request/accept', {alphaUserHandle: alphaUserHandle, betaUserHandle: betaUserHandle }, 'POST')
+    return api('users/request/accept', { alphaUserHandle: alphaUserHandle, betaUserHandle: betaUserHandle }, 'POST')
 }
 
 export function RequestReject(alphaUserHandle, betaUserHandle) {
-    return api('users/request/reject', {alphaUserHandle: alphaUserHandle, betaUserHandle: betaUserHandle }, 'POST')
+    return api('users/request/reject', { alphaUserHandle: alphaUserHandle, betaUserHandle: betaUserHandle }, 'POST')
 }
 
 export function Search(userHandle) {

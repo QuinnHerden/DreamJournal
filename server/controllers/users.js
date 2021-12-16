@@ -25,6 +25,13 @@ app
             })
             .catch(next)
     })
+    .get("/final/:handle", (req, res, next) => {
+        model.GetByFinal(req.params.handle)
+            .then(user => {
+                res.send(user)
+            })
+            .catch(next)
+    })
     .patch("/:user_id", (req, res, next) => {
 
         model.Update(req.params.user_id, req.body)
